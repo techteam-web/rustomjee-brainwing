@@ -281,14 +281,7 @@ const Home = () => {
         immediateRender: false,
       }, "-=9");
 
-      // --- STICKY RERA IMAGE ANIMATION ---
-      // Appears after navbar animation completes
-      tlNav.to(stickyImage.current, {
-        opacity: 1,
-        ease: "power2.out",
-        duration: 2,
-        // immediateRender: false,
-      }, "-=2");
+      
       
     }, container);
     
@@ -421,19 +414,8 @@ const Home = () => {
             </div>
           </section>
 
-          {/* --- STICKY RERA IMAGE: TOP RIGHT, BIGGER --- */}
-          <img
-            ref={stickyImage}
-            src="/images/Rera.svg"
-            alt="RERA Information"
-            className="fixed top-6 p-2 right-6 w-36 h-auto z-[100] opacity-0 pointer-events-auto cursor-pointer 
-                       max-md:w-24 max-md:top-4 max-md:right-4
-                       lg:w-50 lg:top-8 lg:right-8
-                       xl:w-90 xl:top-10 xl:right-10
-                       3xl:w-64 3xl:top-12 3xl:right-12
-                       4xl:w-80 4xl:top-16 4xl:right-16
-                       hover:scale-105 transition-transform duration-300 "
-          />
+        
+          
 
         </div>
       </Loader>

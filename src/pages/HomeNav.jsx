@@ -35,17 +35,7 @@ const HomeNav = () => {
         </div>
 
         {/* RERA Image - Top Right */}
-        <img
-          src="/images/Rera.svg"
-          alt="RERA Information"
-          className="absolute top-6 p-2 right-6 w-36 h-auto z-[100] pointer-events-auto cursor-pointer 
-                     max-md:w-24 max-md:top-4 max-md:right-4
-                     lg:w-50 lg:top-8 lg:right-8
-                     xl:w-90 xl:top-10 xl:right-10
-                     3xl:w-64 3xl:top-12 3xl:right-12
-                     4xl:w-80 4xl:top-16 4xl:right-16
-                     hover:scale-105 transition-transform duration-300"
-        />
+        
 
         {/* Navigation Bar - Bottom */}
         <div className="absolute bottom-5 max-md:bottom-2 max-lg:bottom-2 left-0 w-full 4xl:bottom-20 px-10 z-50">
