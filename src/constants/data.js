@@ -1,0 +1,566 @@
+export const data = [
+  
+  {
+    
+    layer_id: "Layer_8",
+    layer_name: "Layer 8",
+    class: "cls-2",
+    d: "m 2094.77,1575.45 -14.22,-38.09 -44.35,3.39 -19.04,-39.65 -39.13,3.65 -14.35,-27.39 -64.17,6.26 -22.7,-42.26 -69.91,9.39 -29.74,-47.22 -167.22,-67.04 -70.96,8.61 -0.26,-6.78 c 0,0 -30.91,-26.61 -75.91,-20.87 l -295.02,41.04 c 0,0 -28.33,4.09 -14.37,30.17 l -0.26,6.78 -74.35,9.39 -52.7,136.96 13.57,12.26 -31.57,4.3 3.13,17.09 -15.78,2.48 9.91,30.52 11.35,8.22 -3.13,45.39 27.39,-3.13 -14.87,-11.74 52.43,-123.26 74.35,-7.83 0.39,-7.43 c 0,0 -13.3,-19.17 11.35,-24.65 l 295.43,-38.35 c 0,0 52.04,-2.74 79.04,18.78 v 6.26 l 72.78,-7.83 166.3,60.65 29.74,41.09 68.87,-6.65 21.91,37.17 65.74,-6.65 12.52,25.83 41.48,-2.74 18,36.39 42.26,-4.3 16.05,33.65 -12.52,-31.7 v -70.17 h 12.52 z",
+    path_id: "path11",
+    floor_number: 17
+  },
+  {
+    layer_id: "Layer_9",
+    layer_name: "Layer 9",
+    class: "cls-2",
+    d: "m 1013.6,1662.05 -7.17,2.74 3.59,14.09 -14.54,2.35 9.07,27 14.41,7.43 v 19.96 h -6.26 l 0.39,28.96 -5.87,1.17 3.52,15.26 h 19.96 l -20.35,-12.91 30.91,-3.13 -16.83,-10.96 54.78,-110.74 74.74,-7.43 v -5.09 c 0,0 -20.35,-18.39 14.48,-26.22 l 294.65,-32.48 c 0,0 47.35,-4.3 75.52,16.83 v 6.26 l 71.61,-7.43 167.09,55.57 27.78,37.96 73.17,-7.04 21.91,36.39 51.26,-2.35 20.35,-1.17 135.39,58.7 1.96,2.35 2.35,-42.65 2.35,-25.04 -30.91,-14.09 -0.39,-9 h 12.26 l -16.05,-33.65 -41.41,3.72 -18.85,-35.8 -41.48,2.74 -12.52,-25.83 -65.74,6.65 -21.91,-37.17 -68.87,6.65 -29.74,-41.09 -166.3,-60.65 -72.78,7.83 v -6.26 c 0,0 -19.43,-20.35 -79.04,-18.78 l -295.43,38.35 c 0,0 -23.54,2.87 -11.35,24.65 l -0.39,7.43 -74.35,7.83 -52.43,123.26 14.87,11.74 -27.39,3.13 z",
+    path_id: "path12",
+    floor_number: 16
+  },
+  {
+    layer_id: "Layer_10",
+    layer_name: "Layer 10",
+    class: "cls-2",
+    d: "m 1024.42,1744.01 16.83,10.96 -30.91,3.13 21.46,12.91 -36.33,3.26 9.46,23.74 13.43,8.09 v 22.96 l -5.61,1.3 -0.52,27.39 h -4.7 l 0.78,17.74 22.43,-1.57 -21.39,-11.48 31.89,-2.35 -14.67,-9.13 52.7,-98.09 74.35,-6.26 1.04,-6.26 c 0,0 -19.3,-9.65 9.65,-21.65 l 52.7,-6.26 238.7,-23.22 c 0,0 49.83,-4.7 82.96,14.61 v 6.26 l 70.17,-6.26 168.52,48.52 30.26,33.65 68.87,-6.52 23.48,29.48 63.91,-5.48 14.35,20.61 39.13,-2.09 17.22,27.65 44.87,-3.65 16.43,29.48 -13.57,-28.43 -0.52,-76.04 c 0,0 30.13,-3 27.33,-12.91 l -137.35,-61.04 -71.61,3.52 -21.91,-36.39 -73.17,7.04 -27.78,-37.96 -167.09,-55.57 -71.61,7.43 v -6.26 c 0,0 -19.11,-19.83 -75.52,-16.83 l -295.51,32.68 c 0,0 -32.34,6.32 -13.62,26.93 v 4.17 l -74.78,7.51 -52.2,105.52 -2.55,5.15 z",
+    path_id: "path13",
+    floor_number: 15
+  },
+  {
+    layer_id: "Layer_11",
+    layer_name: "Layer 11",
+    class: "cls-2",
+    d: "m 1008.32,1875.49 h -11.6 l 8.61,23.49 11.74,5.09 v 27.39 l -4.7,1.57 v 27 h -5.48 l 4.3,18 h 18.78 l -19.17,-10.96 28.96,-1.17 -13.7,-9.39 53.61,-83.74 74.35,-6.65 v -5.09 c 0,0 -19.17,-11.35 14.48,-19.96 l 284.87,-25.43 c 0,0 66.52,-2.74 84.91,13.3 v 5.87 l 71.61,-5.48 166.7,42.65 30.91,28.96 70.04,-5.87 20.74,26.61 67.3,-5.48 12.91,18.78 38.74,-2.35 17.61,23.48 44.61,-1.96 16.83,23.87 -14.87,-27 0.39,-73.96 14.08,-1.57 -16.43,-29.48 -44.87,3.65 -17.22,-27.65 -39.13,2.09 -14.35,-20.61 -63.91,5.48 -23.48,-29.48 -68.87,6.52 -30.26,-33.65 -168.52,-48.52 -70.17,6.26 v -6.26 c 0,0 -32.54,-21.23 -91.2,-13.81 l -283.15,28.68 c 0,0 -28.57,11.34 -9.65,21.65 l -1.04,6.26 -74.35,6.26 -52.7,98.09 14.67,9.13 -31.89,2.35 21.39,11.48 -22.43,1.57 z",
+    path_id: "path14",
+    floor_number: 14
+  },
+  {
+    layer_id: "Layer_12",
+    layer_name: "Layer 12",
+    class: "cls-2",
+    d: "m 1011.19,1978.02 -14.48,1.83 7.24,17.48 14.41,6.78 v 30 h -6.26 l 1.04,29.74 h -5.61 l 3.26,9.13 0.26,5.74 -15.65,3.39 34.96,-1.3 -17.48,-9.65 28.43,-1.57 -14.87,-5.74 52.43,-72.26 73.83,-4.43 1.83,-6.52 c 0,0 -15.39,-7.3 3.91,-14.09 l 21.39,-4.17 290.09,-19.3 c 0,0 54.26,1.04 69.13,10.96 v 6.78 l 70.17,-6 169.04,36.78 28.96,24.52 68.35,-4.96 22.43,20.87 67.04,-2.61 13.04,15.65 39.65,-3.39 17.74,21.65 45.13,-2.35 15.65,21.13 -13.04,-20.87 -1.3,-81.91 14.35,-1.3 -16.83,-23.87 -44.78,1.73 -17.44,-23.25 -38.74,2.35 -12.91,-18.78 -67.3,5.48 -20.74,-26.61 -70.04,5.87 -30.91,-28.96 -167.56,-42.59 -70.74,5.41 v -5.87 c 0,0 -19.58,-16.7 -82.7,-13.37 l -287.08,25.5 c 0,0 -32.48,6.26 -14.48,19.96 v 5.09 l -73.75,6.6 -54.21,83.79 13.7,9.39 -28.96,1.17 20.87,10.96 h -20.48 z",
+    path_id: "path15",
+    floor_number: 13
+  },
+  {
+    layer_id: "Layer_13",
+    layer_name: "Layer 13",
+    class: "cls-2",
+    d: "m 2096.28,2075 -15.65,-21.13 -45.13,2.35 -17.74,-21.65 -39.65,3.39 -13.04,-15.65 -67.04,2.61 -22.43,-20.87 -68.35,4.96 -28.96,-24.52 -169.04,-36.78 -70.17,6 v -6.78 c 0,0 -14.87,-10.7 -69.13,-10.96 l -290.09,19.3 -20.18,3.94 c 0,0 -22.08,5.19 -5.12,14.32 l -1.83,6.52 -73.83,4.43 -52.43,72.26 14.87,5.74 -28.43,1.57 18.26,10.96 h -35.74 l 9.13,16.7 14.35,4.17 -0.52,33.39 h -6.26 l 0.52,29.22 h -5.48 l 4.43,9.39 -0.52,7.83 -15.65,2.87 35.74,-1.3 -18.52,-7.04 28.7,-1.57 -13.83,-7.04 52.17,-58.43 73.83,-4.43 v -5.48 c 0,0 -14.61,-6.52 9.65,-13.04 L 1465,2079.1 c 0,0 53.22,-2.87 73.57,9.65 l -0.52,6.52 72.52,-5.22 167.22,31.04 28.7,20.35 69.39,-4.7 23.22,19.04 65.74,-3.91 13.04,12 39.91,-1.3 16.96,16.7 46.43,-1.57 15.13,16.43 -14.09,-19.3 -1.04,-82.7 h 15.13 z",
+    path_id: "path16",
+    floor_number: 12
+  },
+  {
+    layer_id: "Layer_14",
+    layer_name: "Layer 14",
+    class: "cls-2",
+    d: "m 2095.67,2175.44 -14.52,-15.77 -46.43,1.57 -16.96,-16.7 -39.91,1.3 -14.05,-11.94 -64.73,3.85 -23.22,-19.04 -69.39,4.7 -28.7,-20.35 -167.22,-31.04 -72.52,5.22 0.52,-6.52 c 0,0 -23.74,-14.09 -73.57,-9.65 l -301.83,18.26 c 0,0 -21.91,4.96 -9.65,13.04 v 5.48 l -73.83,4.43 -52.17,58.43 13.83,7.04 -28.7,1.57 18.52,7.04 -35.74,1.3 9.65,12.52 12.78,4.17 0.78,36 -5.48,2.61 -0.78,27.39 -5.48,1.83 4.17,4.96 -1.04,10.96 19.04,1.04 -16.7,-5.22 27.65,-1.57 -12.52,-4.96 51.65,-44.87 74.35,-4.17 0.26,-4.43 c 0,0 -15.91,-6.78 12.52,-10.96 l 297.65,-14.09 c 0,0 33.13,-1.04 74.87,7.04 l 0.52,6 71.22,-2.87 168.78,23.48 27.39,14.61 68.87,-3.13 23.74,15.13 65.48,-2.61 14.09,9.65 38.61,-1.57 18.78,13.57 43.3,-2.09 16.09,13.04 -12.96,-15.39 -1.04,-87.13 14,-1.18 z",
+    path_id: "path17",
+    floor_number: 11
+  },
+  {
+    layer_id: "Layer_15",
+    layer_name: "Layer 15",
+    class: "cls-2",
+    d: "m 2095.67,2275 -16.09,-13.04 -43.3,2.09 -18.78,-13.57 -38.61,1.57 -14.09,-9.65 -65.48,2.61 -23.74,-15.13 -68.87,3.13 -27.39,-14.61 -169.81,-23.44 -69.48,3.61 -1.24,-6.78 c 0,0 -50.48,-10.77 -86.45,-6.5 l -286.07,13.54 c 0,0 -27.85,3.39 -12.52,10.96 l -0.26,4.43 -74.35,4.17 -51.65,44.87 12.52,4.96 -27.65,1.57 17.41,5.22 -34.37,0.85 9.33,10.17 14.28,3.91 -0.39,35.61 -5.09,5.09 -0.39,27.39 -5.87,1.96 3.52,4.89 -1.17,11.15 0.2,0.98 19.17,1.17 -17.41,-3.72 28.17,-1.17 -12.33,-3.13 51.46,-33.46 75.13,-2.93 -0.98,-4.5 c 0,0 -17.41,-5.67 13.11,-7.83 l 300.13,-10.57 c 0,0 59.09,-0.59 71.61,5.87 l 0.98,4.89 c 0,0 71.41,-1.37 72.2,-1.57 0.79,-0.2 167.48,16.43 167.48,16.43 l 29.93,11.54 67.7,-2.35 22.3,10.17 66.13,-2.35 13.11,7.63 39.91,-1.37 16.63,9.78 44.8,-0.98 16.61,9.59 c 0,0 -12.89,-9.98 -12.89,-10.57 0,-0.59 -0.59,-91.57 -0.59,-91.57 l 13.48,-1.04 z",
+    path_id: "path18",
+    floor_number: 10
+  },
+  {
+    layer_id: "Layer_16",
+    layer_name: "Layer 16",
+    class: "cls-2",
+    d: "m 2094.52,2375 -15.86,-9.58 -44.4,0.97 -16.63,-9.78 -39.52,2.54 -13.5,-8.8 -66.13,2.35 -22.3,-10.17 -67.7,2.35 -31.12,-11.66 -166.3,-16.32 -72.2,1.57 -1.67,-5.22 c 0,0 -26.69,-7.02 -69.54,-5.55 l -303.24,10.7 c 0,0 -25.91,1.11 -12.09,7.44 l 1.69,4.76 -75.13,2.93 -51.01,33.17 11.88,3.42 -27,1.13 16.24,3.77 -33.59,0.78 9.72,7.63 13.11,2.93 v 41.48 l -6.46,1.76 1.17,28.37 -4.7,0.78 2.54,3.52 0.39,11.54 -15.39,4.11 31.96,0.98 -0.78,-5.15 51.52,-20.09 75.26,-1.96 -0.2,-5.48 c 0,0 -15.46,-3.52 -0.2,-5.48 15.26,-1.96 319.7,-6.85 319.7,-6.85 0,0 60.07,0.59 66.13,3.72 l -0.59,5.87 73.37,-1.96 164.93,10.96 27.39,6.46 73.37,-0.2 22.3,5.87 51.85,1.57 c 0,0 32.28,-1.37 59.28,1.57 l 98.61,9.39 v -41.28 c 0,0 25.83,-12.33 -1.37,-31.11 0,0 -5.28,-13.32 -9,-11.55 -3.72,1.77 -16.24,9.59 -16.24,9.01 0,-0.58 -0.78,-26.22 -0.78,-26.22 l 12.2,-0.98 z",
+    path_id: "path19",
+    floor_number: 9
+  },
+  {
+    layer_id: "Layer_17",
+    layer_name: "Layer 17",
+    class: "cls-2",
+    d: "m 2109.71,2475 c 0,0 -115.03,-10.72 -119.36,-10.88 -4.33,-0.16 -90.37,-1.64 -90.37,-1.64 l -22.3,-5.87 -73.37,0.2 -27.39,-6.46 -164.93,-10.96 -73.37,1.96 v -6.11 c 0,0 -43.71,-3.84 -67.58,-3.44 -23.87,0.4 -313.05,6.49 -313.05,6.49 0,0 -20.19,-0.2 -4.41,5.8 l 0.2,5.48 -75.26,1.96 -51.52,20.09 0.78,5.15 -32.35,-0.72 9.33,5.61 13.57,0.78 0.13,43.7 -5.35,1.17 -0.78,30 -4.04,0.78 3.26,0.78 -0.13,14.87 -15.98,2.61 c 0,0 1.5,2.61 2.93,2.61 1.43,0 27.78,-2.48 27.78,-2.48 l 54.91,-8.61 71.61,0.26 1.04,-6.39 c 0,0 -8.22,-3.52 -0.13,-4.7 l 21.39,-0.52 304.7,-1.57 58.3,1.43 2.09,8.48 73.7,-1.96 157.7,3.13 38.35,2.09 67.57,1.17 21.26,1.96 66.65,-0.78 13.83,0.52 26.48,1.57 13.7,-0.52 c 0,0 18.13,0.65 18.52,0.78 0.39,0.13 42.91,2.22 42.91,2.22 l 1.96,-0.26 0.65,-98.02 26.41,-1.76 z",
+    path_id: "path20",
+    floor_number: 8
+  },
+  {
+    layer_id: "Layer_18",
+    layer_name: "Layer 18",
+    class: "cls-2",
+    d: "m 2083.04,2580 13.57,-1.3 -15.91,-2.61 -61.43,-3 -15.51,0.41 -38.49,-1.98 -66.65,0.78 -21.26,-1.96 -68.99,-1.25 -36.92,-2.01 -159.51,-3.08 h -71.23 l -2.74,-6.57 -381.78,0.59 c 0,0 -13.05,-0.2 -2.48,4.76 l -1.04,6.39 -71.61,-0.26 -54.91,8.61 -27.78,2.48 20.09,1.04 -0.52,48.26 -5.74,2.09 -1.57,46.17 -15.2,3.13 23.02,2.61 63.91,4.43 70.96,1.3 -1.3,-7.04 186,2.87 145.57,0.78 c 0,0 52.96,0.26 54.78,-1.04 1.82,-1.3 6,7.04 6,7.04 l 60.52,-1.83 144,-0.52 c 0,0 51.65,-1.04 59.22,-3.39 l 69.39,1.3 22.7,-1.83 65.22,0.52 13.57,-1.83 38.09,0.52 20.09,-2.35 30.78,1.04 14.35,0.26 14.35,-2.09 -14.61,-2.35 1.04,-99.13 z",
+    path_id: "path21",
+    floor_number: 7
+  },
+  {
+    layer_id: "Layer_19",
+    layer_name: "Layer 19",
+    class: "cls-2",
+    d: "m 2095.55,2675 -14.85,1.9 -43.57,-1.28 -20.09,2.35 -38.09,-0.52 -13.57,1.83 -65.22,-0.52 -22.7,1.83 -69.39,-1.3 c 0,0 -24.73,3.75 -38.06,2.79 l -168.55,1.23 -57.13,1.72 -5.13,-7.08 -112,0.77 -275.22,-3.35 1.3,7.04 -157.89,-8.35 23.02,2.61 -0.26,52.96 -6,-1.3 -1.57,47.22 -13.83,3.13 24,2.87 57.13,20.87 75.91,2.35 0.26,-4.17 45.39,2.87 237.13,3.13 c 0,0 97.57,3.65 102.52,-1.83 l -0.78,6.26 h 68.87 l 102,-3.65 65.74,-3.39 33.65,-7.3 68.35,2.35 23.22,-6.26 c 0,0 62.61,1.83 63.91,1.57 1.3,-0.26 15.91,-5.22 15.91,-5.22 l 38.87,1.3 18.26,-5.48 h 43.83 c 0,0 16.7,-3.65 15.65,-3.91 -1.05,-0.26 -14.35,-3.65 -14.35,-3.65 l 0.52,-97.3 12.77,-5.06 z",
+    path_id: "path22",
+    floor_number: 6
+  },
+  {
+    layer_id: "Layer_20",
+    layer_name: "Layer 20",
+    class: "cls-2",
+    d: "m 2095.63,2780 -15.72,4.16 h -41.67 l -19.37,5.48 -38.87,-1.3 -14.77,4.89 -65.06,-1.24 -24.5,6.22 -67.07,-2.3 -33.65,7.3 -165.2,7.04 h -71.41 l 0.78,-6.26 c 0,0 -23.67,4.74 -63.98,2.83 l -275.67,-4.13 -45.39,-2.87 -0.26,4.17 -75.91,-2.35 -57.13,-20.87 -24,-2.87 20.15,4.89 1.37,46.76 -5.87,2.54 0.2,25.83 -4.7,2.54 2.74,1.96 0.59,10.17 -15.85,9.39 h 19.17 l 63.59,39.13 75.33,1.76 95.48,4.11 171.98,4.89 45.78,2.15 c 0,0 67.7,0 72,-4.89 v 4.89 l 72.39,3.33 162.98,-14.87 33.85,-11.15 68.87,1.37 23.48,-9.2 63.78,2.54 14.87,-6.85 38.74,0.98 19.17,-9.98 44.22,1.57 14.54,-8.8 -13.37,-3.52 0.2,-94.11 13.17,-5.34 z",
+    path_id: "path23",
+    floor_number: 5
+  },
+  {
+    layer_id: "Layer_21",
+    layer_name: "Layer 21",
+    class: "cls-2",
+    d: "m 2095.63,2880 -15.52,8.77 -43.24,-1.53 -19.17,9.98 -38.74,-0.98 -14.87,6.85 -63.78,-2.54 -23.48,9.2 -68.87,-1.37 -33.85,11.15 -162.98,14.87 -72.39,-3.33 v -5.67 c 0,0 1.14,7.34 -72.99,5.63 l -121.31,-4.28 -266.26,-8.58 -64.17,-39.13 h -19.57 l 23.87,4.11 -0.78,45.78 -4.5,2.15 -0.2,23.87 -6.07,5.87 h 4.5 l -0.39,9.59 -5.28,1.57 -10.17,9.78 h 19.76 l 3.13,6.65 59.87,48.72 71.41,3.52 c 0,0 6.07,4.11 30.52,5.28 24.45,1.17 117.39,4.89 117.39,4.89 l 150.65,6.46 c 0,0 84.13,4.89 92.93,-6.46 l -0.59,6.26 70.63,1.24 160.24,-19.05 36.59,-16.24 68.67,1.96 24.07,-12.72 64.17,2.15 14.09,-9.78 39.72,2.35 18.2,-12.91 44.8,0.59 13.95,-11.35 -13.17,-4.11 v -88.24 l 13.17,-10.96 z",
+    path_id: "path24",
+    floor_number: 4
+  },
+  {
+    layer_id: "Layer_22",
+    layer_name: "Layer 22",
+    class: "cls-2",
+    d: "m 2095.63,2980 -13.95,11.35 h -43.96 l -19.04,12.33 -39.72,-2.35 -14.09,9.78 -64.17,-2.15 -24.07,12.72 -68.67,-1.96 -36.59,16.24 -160.24,19.05 -70.63,-1.24 1.57,-8.02 c 0,0 1.84,8.57 -50.6,9.24 l -306.5,-12.15 c 0,0 -26.37,0.43 -35.37,-5.51 l -71.41,-3.52 -59.87,-48.72 v 43.17 l -3.46,-0.52 -1.83,27.27 -5.48,4.82 v 8.87 l -12.13,11.22 18.65,3.65 65.74,70.96 69.13,3.13 c 0,0 -2.61,7.04 33.13,9.13 35.74,2.09 254.35,12.52 254.35,12.52 0,0 89.48,4.43 101.74,-6.52 l 3.13,5.22 70.17,3.65 159.13,-25.3 38.09,-22.17 68.09,3.65 23.74,-16.96 65.22,2.87 13.83,-10.96 40.43,1.04 17.74,-16.17 44.09,1.04 16.96,-15.39 c 0,0 -0.78,-2.09 -5.74,-2.48 l -10.43,-2.48 -0.26,-84.78 13.3,-13.57 z",
+    path_id: "path25",
+    floor_number: 3
+  },
+  {
+    layer_id: "Layer_23",
+    layer_name: "Layer 23",
+    class: "cls-2",
+    d: "m 2082.34,3090 -44.63,-0.55 -17.74,16.17 -40.43,-1.04 -13.83,10.96 -65.22,-2.87 -23.26,16.62 -68.56,-3.31 -38.09,22.17 -160.24,25.3 -69.07,-3.65 -3.13,-5.22 c 0,0 -16.44,8.99 -66.52,7.4 l -262.96,-11.99 c 0,0 -59.01,0.02 -59.73,-10.55 l -69.13,-3.13 -65.74,-70.96 4.04,8.54 0.59,70.04 -5.87,0.59 -1.76,3.33 c 0,0 -8.02,3.91 -8.22,4.5 -0.2,0.59 -8.41,13.11 -8.41,13.11 l 20.54,3.33 64.37,85.7 68.48,4.5 c 0,0 -1.76,9.59 31.5,12.33 33.26,2.74 290.74,18.98 290.74,18.98 0,0 43.71,1.57 68.32,-10.76 v 7.83 l 72.74,1.76 164.74,-32.48 29.74,-25.24 72,4.5 24.65,-22.3 56.15,-2.35 c 0,0 5.28,4.7 33.46,-2.93 28.18,-7.63 119.35,-33.07 119.35,-33.07 v -38.54 l -5.09,-2.74 -22.7,-27.78 -1.09,-26.19 z",
+    path_id: "path26",
+    floor_number: 2
+  },
+  
+];
+export const slidesData = [
+  {
+    id: 21,
+    src: "/images/3.6.1.jpg",
+    category: "exterior",
+    title: "Quiet Approach",
+  },
+  {
+    id: 18,
+    src: "/images/3.2.1.jpg",
+    category: "exterior",
+    title: "Marquee Entry",
+  },
+  {
+    id: 1,
+    src: "/images/1.1.1.jpg",
+    category: "amenities",
+    title: "Private Drive",
+  },
+  {
+    id: 8,
+    src: "/images/1.7.1.jpg",
+    category: "amenities",
+    title: "The Grand Foyer",
+  },
+  {
+    id: 7,
+    src: "/images/1.6.1.jpg",
+    category: "amenities",
+    title: "The Lobby Arches",
+  },
+  {
+    id: 5,
+    src: "/images/1.4.1.jpg",
+    category: "amenities",
+    title: "Elevator Lobby",
+  },
+  {
+    id: 10,
+    src: "/images/1.9.1.jpg",
+    category: "amenities",
+    title: "Elevator Interior",
+  },
+  {
+    id: 3,
+    src: "/images/1.2.1.jpg",
+    category: "amenities",
+    title: "Lift Bank",
+  },
+  {
+    id: 4,
+    src: "/images/1.3.1.jpg",
+    category: "amenities",
+    title: "Residence Foyer",
+  },
+  {
+    id: 6,
+    src: "/images/1.5.1.jpg",
+    category: "amenities",
+    title: "Living Lounge",
+  },
+  {
+    id: 11,
+    src: "/images/2.1.1.jpg",
+    category: "apartment",
+    title: "Ocean Side Living",
+  },
+  {
+    id: 16,
+    src: "/images/2.7.1.jpg",
+    category: "apartment",
+    title: "Chef's Kitchen",
+  },
+  {
+    id: 12,
+    src: "/images/2.2.1.jpg",
+    category: "apartment",
+    title: "Master Suite",
+  },
+  {
+    id: 14,
+    src: "/images/2.5.1.jpg",
+    category: "apartment",
+    title: "Ensuite Bath",
+  },
+  {
+    id: 9,
+    src: "/images/1.8.1.jpg",
+    category: "amenities",
+    title: "Infinity Edge",
+  },
+  {
+    id: 17,
+    src: "/images/3.1.1.jpg",
+    category: "exterior",
+    title: "Poolside Lounge",
+  },
+  {
+    id: 2,
+    revealImage: "/images/gym_d.png",
+    src: "/images/gym_n.png",
+    category: "amenities",
+    title: "Fitness Studio",
+  },
+  {
+    id: 13,
+    revealImage: "/images/2.3.jpg",
+    src: "/images/2.4.jpg",
+    category: "apartment",
+    title: "Club Lounge",
+  },
+  {
+    id: 15,
+    src: "/images/2.6.1.jpg",
+    category: "apartment",
+    title: "The Curved Ribbon",
+  },
+  {
+    id: 20,
+    src: "/images/3.5.1.jpg",
+    category: "exterior",
+    title: "Edge Perspective",
+  },
+  {
+    id: 19,
+    revealImage: "/images/3.3.1.jpg",
+    src: "/images/3.4.1.jpg",
+    category: "exterior",
+    title: "The Tower",
+  },
+];
+export const type1SlidesData = [
+  {
+    id: 1,
+    slideType: "fullImage",
+
+    // Background image (full screen)
+    image: {
+      src: "/slides/bg.jpg",
+      className: "object-cover w-full h-full",
+    },
+
+    // ✅ Top-left text
+    title: {
+      text: "AN ADDRESS THE SKYLINE WILL REMEMBER.",
+      className:
+        "text-black text-4xl md:text-4xl font-light tracking-wide leading-tight",
+    },
+
+    // ✅ Center image - full width, controlled height with cropping
+    centerImage: {
+      src: "/slides/1.1.jpg",
+      className: "w-full h-full object-cover object-[center_30%]", // ✅ object-cover for cropping
+      containerClassName: "w-full h-[60vh] mb-20", // ✅ Control height here (60% viewport height)
+    },
+
+    // ✅ Big black line at bottom
+    bottomLine: {
+      show: true,
+      className: "h-1 bg-black mx-20",
+    },
+
+    // Layout configuration
+    imageContainerClassName: "w-full h-full relative",
+    contentClassName: "absolute top-12 left-12 z-20",
+    statsContainerClassName: "",
+
+    description: { text: "", className: "" },
+    stats: [],
+  },
+
+  {
+    id: 2,
+    slideType: "splitBackground",
+
+    leftSection: {
+      background: {
+        src: "/slides/2.2.jpg",
+        className: "object-cover w-full h-full",
+      },
+      image: {
+        src: "/slides/2.1.jpg",
+        className: "w-full max-w-6xl h-auto object-contain",
+        position: "absolute left-8 top-1/2 -translate-y-1/2",
+      },
+      widthClassName: "w-[60%]",
+    },
+
+    rightSection: {
+      background: {
+        src: "/slides/2.3.jpg",
+        className: "object-cover w-full h-full",
+      },
+
+      // Title at top-right originally — switch to left if you want left alignment
+      topText: {
+        text: "Boman R. Irani",
+        className: "text-black text-4xl font-light uppercase text-right", // changed to left
+      },
+
+      // New: subtitle directly under title
+      topSubtext: {
+        text: "Chairman & Managing Director,\nRustomjee Group",
+        className:
+          "text-black text-base font-light uppercase opacity-80 mt-2 text-right whitespace-pre-line",
+      },
+
+      // Mid paragraph with newline support and left align
+      midText: {
+        text: "Our story in Bandra began with three marquee\naddresses in Pali Hill. Today, it rises to its\npinnacle at Mount Mary. Finding its rarest\nexpression yet. We are bringing to life a legacy\naddress - Cliff Tower. Close to the timeless chime\nof church bells and the whispers of sea breezes.\n\nJust thirty-seven residences, each one as rare as\nthe vantage it commands. An address poised\nbetween heritage and horizon.\n\nA life elevated, curated with restraint, crafted\nwith profound intent, and destined to be a part\nof Bandra's history.",
+        className:
+          "text-black uppercase text-right text-md font-light leading-relaxed whitespace-pre-line", // preserves \n
+      },
+      bottomBoxes: [
+        { className: "w-10 h-10 bg-black" },
+        { className: "w-10 h-10 bg-black" },
+        { className: "w-10 h-10 bg-[#C9B58E]" },
+      ],
+      bottomBoxesContainerClassName: "flex gap-2 justify-end mt-2",
+
+      widthClassName: "w-[40%]",
+      contentClassName: "px-12 py-16",
+    },
+  },
+  {
+    id: 3,
+    slideType: "threeImages",
+
+    // Background
+    image: {
+      src: "/slides/bg.jpg",
+      className: "object-cover w-full h-full",
+    },
+
+    // Top text
+    title: {
+      text: "IMAGINE SPACES THAT ARE\nFELT, NOT JUST SEEN",
+      className:
+        "text-black text-left text-3xl font-thin uppercase tracking-wide whitespace-pre-line ",
+    },
+
+    // ✅ Three images - full width stretch with object-cover
+    middleImages: [
+      {
+        src: "/slides/3.1.jpg",
+        className: "w-full h-full object-cover", // ✅ object-cover crops and fills
+        subtext: "PATTY MAK",
+        subTextSecondLine: "PRINCIPAL DESIGNER",
+        subtextClassName:
+          "text-black text-sm uppercase font-light tracking-wide",
+        subtextSecondLineClassName:
+          "text-black text-md uppercase font-thin opacity-70 mt-1",
+      },
+      {
+        src: "/slides/3.2.jpg",
+        className: "w-full h-full object-cover",
+        subtext: "SANJAY PURI",
+        subTextSecondLine: "PRINCIPAL ARCHITECT",
+        subtextClassName:
+          "text-black text-sm uppercase font-light tracking-wide",
+        subtextSecondLineClassName:
+          "text-black text-md uppercase font-thin opacity-70 mt-1",
+      },
+      {
+        src: "/slides/3.3.jpg",
+        className: "w-full h-full object-cover",
+        subtext: "KUNAL MANIAR",
+        subTextSecondLine: "LANDSCAPE DESIGN PARTNER",
+        subtextClassName:
+          "text-black text-sm uppercase font-light tracking-wide",
+        subtextSecondLineClassName:
+          "text-black text-md uppercase font-thin opacity-70 mt-1",
+      },
+    ],
+    middleImagesContainerClassName: "flex gap-6 items-stretch w-full px-12",
+    imageWrapperClassName: "flex-1 h-80 overflow-hidden",
+    // White line at bottom
+    bottomLine: {
+      show: true,
+      className: "h-1 bg-white",
+    },
+
+    // Layout
+    imageContainerClassName: "w-full h-full relative",
+    contentClassName: "absolute top-12 left-12 z-20",
+  },
+  // data.js - Slide 4
+  // data.js - Slide 4 with shared background
+  {
+    id: 4,
+    slideType: "splitWithLists",
+
+    // ✅ Shared background for entire slide
+    image: {
+      src: "/slides/bg.jpg",
+      className: "object-cover w-full h-full",
+    },
+
+    // Left section - 40% with content
+    leftSection: {
+      title: {
+        text: "SEAMLESSLY CONNECTED.\nSERENELY APART",
+        className:
+          "text-black text-3xl font-light uppercase tracking-wide whitespace-pre-line mb-12",
+      },
+
+      lists: [
+        {
+          heading: "SOUTH MUMBAI",
+          headingClassName: "text-black text-lg font-semibold uppercase mb-4",
+          items: [
+            "WORLI: 15-25 MINUTES",
+            "MAHALAXMI/LOWER PAREL: 20-30 MINUTES",
+            "ALTAMOUNT ROAD/MALABAR HILL: 30-40 MINUTES",
+            "CUFFE PARADE/COLABA: 40-50 MINUTES",
+          ],
+          itemClassName: "text-black text-sm font-light mb-2",
+        },
+        {
+          heading: "WESTERN SUBURBS",
+          headingClassName: "text-black text-lg font-semibold uppercase mb-4",
+          items: [
+            "JUHU: 10-15 MINUTES",
+            "VERSOVA: 15-20 MINUTES",
+            "ANDHERI WEST: 15-25 MINUTES",
+            "POWAI: 30-45 MINUTES",
+          ],
+          itemClassName: "text-black text-sm font-light mb-2",
+        },
+        {
+          heading: "COMMERCIAL HUBS",
+          headingClassName: "text-black text-lg font-semibold uppercase mb-4",
+          items: [
+            "BANDRA-KURLA COMPLEX (BKC): 10-15 MINUTES",
+            "LOWER PAREL: 20-30 MINUTES",
+          ],
+          itemClassName: "text-black text-sm font-light mb-2",
+        },
+      ],
+      listsContainerClassName: "space-y-8",
+
+      widthClassName: "w-[40%]",
+      contentClassName: "px-16 py-12 flex flex-col justify-center",
+    },
+
+    // Right section - 60% with PNG overlay
+    rightSection: {
+      image: {
+        src: "/slides/4.2.png", // PNG with transparency
+        className: "object-contain w-full h-full",
+      },
+      widthClassName: "w-[60%]",
+    },
+
+    imageContainerClassName: "w-full h-full relative",
+  },
+
+  {
+    id: 5,
+    slideType: "threeImages",
+
+    // Background
+    image: {
+      src: "/slides/bg.jpg",
+      className: "object-cover w-full h-full",
+    },
+
+    // Top text
+    title: {
+      text: "DISCOVER OUR GATED COMMUNITIES THAT HAVE\nREDEFINED WHAT COMING HOME FEELS LIKE.",
+      className:
+        "text-black text-left text-3xl font-thin uppercase tracking-wide whitespace-pre-line",
+    },
+
+    // Four images
+    middleImages: [
+      {
+        src: "/slides/5.1.jpg",
+        className: "w-full h-full object-cover scale-100", // ✅ Added scale-150 to zoom 1.5x
+        subtext: "Rustomjee Elements",
+        subTextSecondLine: "Upper Juhu",
+        subtextClassName:
+          "text-black text-sm uppercase font-light tracking-wide",
+        subtextSecondLineClassName:
+          "text-black text-md font-thin opacity-70 mt-1",
+      },
+      {
+        src: "/slides/5.2.jpg",
+        className: "w-full h-full object-cover scale-100",
+        subtext: "Rustomjee Seasons",
+        subTextSecondLine: "BKC Annexe",
+        subtextClassName:
+          "text-black text-sm uppercase font-light tracking-wide",
+        subtextSecondLineClassName:
+          "text-black text-md uppercase font-thin opacity-70 mt-1",
+      },
+      {
+        src: "/slides/5.3.jpg",
+        className: "w-full h-full object-cover scale-100",
+        subtext: "Rustomjee urbania",
+        subTextSecondLine: "Khar",
+        subtextClassName:
+          "text-black text-sm uppercase font-light tracking-wide",
+        subtextSecondLineClassName:
+          "text-black text-md uppercase font-thin opacity-70 mt-1",
+      },
+      {
+        src: "/slides/5.4.jpg",
+        className: "w-full h-full object-cover scale-100",
+        subtext: "Rustomjee Crown",
+        subTextSecondLine: "Prabhadevi",
+        subtextClassName:
+          "text-black text-sm uppercase font-light tracking-wide",
+        subtextSecondLineClassName:
+          "text-black text-md uppercase font-thin opacity-70 mt-1",
+      },
+    ],
+
+    middleImagesContainerClassName:
+      "flex gap-6 items-stretch w-full px-12 h-[500px]",
+    imageWrapperClassName: "flex-1  overflow-hidden", // ✅ Changed from h-90 to h-[500px]
+
+    // White line at bottom
+    bottomLine: {
+      show: true,
+      className: "h-1 bg-white",
+    },
+
+    // Layout
+    imageContainerClassName: "w-full h-full relative",
+    contentClassName: "absolute top-12 left-12 z-20",
+  },
+];
