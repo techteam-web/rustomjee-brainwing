@@ -6,11 +6,41 @@ import { Birds } from "./Birds";
 import Effects from "./Effects";
 import CameraAnimations from "./CameraAnimations";
 import { useSceneReady } from "./SceneReadyContext";
+import { button, useControls } from "leva";
 
 const Scene = () => {
   const cameraControlRef = useRef();
   const disableAutoRotate = useRef(false);
   const targetMouse = useRef({ x: 0, y: 0 });
+
+  //  if you want to log camera positions
+  // useControls({
+  //   "Log Camera Pos/Target": button(
+  //     () => {
+  //       if (!cameraControlRef.current) return;
+
+  //       const pos = cameraControlRef.current.getPosition();
+  //       const target = cameraControlRef.current.getTarget();
+
+  //       console.log("📌 Camera Position:", pos);
+  //       console.log("🎯 Camera Target:", target);
+  //     },
+  //     { collapsed: true }
+  //   ),
+  // });
+
+  // const {posx, posz} = useControls({
+  //   posx:{
+  //     value:390,
+  //     min: -1000,
+  //     max: 2000
+  //   },
+  //   posz:{
+  //     value:1830,
+  //     min: -1000,
+  //     max: 2000
+  //   }
+  // })
   
   // ✅ Scene ready signal
   const { setSceneReady } = useSceneReady();
@@ -92,10 +122,14 @@ const Scene = () => {
         mouseButtons={{ left: 0, middle: 0, right: 0, wheel: 0 }}
         touches={{ one: 0, two: 0, three: 0 }}
       />
-      <Html center position={[0, 200, 0]} distanceFactor={1900} zIndexRange={[0, 0]}>
-        <div className="w-30 pointer-events-none">
-          <img className="w-full" src="/Cliff_Tower.png" />
-        </div>
+      <Html center position={[0, 270, 0]} distanceFactor={1900} zIndexRange={[999, 1000]} occlude={false}>
+        {/* <div className="w-40 pointer-events-none drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]">
+          <img className="w-full" src="images/Cliff-tower.png" />
+        </div> */}
+
+        <div className="w-40 pointer-events-none bg-gray-300 backdrop-blur-lg rounded-sm shadow-[0_0_50px_rgba(59,130,246,0.6)] ">
+  <img className="w-full drop-shadow-[0_0_20px_rgba(59,130,246,0.8)]" src="images/Cliff-tower.png" />
+</div>
       </Html>
       <CameraAnimations cameraControlRef={cameraControlRef} />
       <City />

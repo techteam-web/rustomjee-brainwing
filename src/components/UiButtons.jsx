@@ -6,7 +6,7 @@ import { CiAt, CiHeart } from "react-icons/ci";
 import { IoSchoolOutline } from "react-icons/io5";
 import { LuHotel } from "react-icons/lu";
 import { PiHospitalLight, PiMapPinSimpleArea } from "react-icons/pi";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import gsap from "gsap";
 import PathCard from "./PathCard";
 
@@ -19,6 +19,7 @@ export default function UIButtons() {
   const containerRef = useRef(null);
   const pathButtonsRef = useRef(null);
   const pathCardRef = useRef(null);
+  const categoryContainerRef = useRef(null);
   const [pathButtonsPosition, setPathButtonsPosition] = useState({ left: 0 });
   const [hoveredCategory, setHoveredCategory] = useState(null);
 
@@ -26,7 +27,7 @@ export default function UIButtons() {
     { id: "portfolio", icon: RiPagesLine, label: "Portfolio" },
     { id: "historical", icon: GiGreekTemple, label: "Historical" },
     { id: "recreational", icon: CiAt, label: "Recreational" },
-    { id: "clubs", icon: CiHeart, label: "Clubs" },
+    // { id: "clubs", icon: CiHeart, label: "Clubs" },
     { id: "schools", icon: IoSchoolOutline, label: "Schools" },
     { id: "hotels", icon: LuHotel, label: "Hotels" },
     { id: "hospitals", icon: PiHospitalLight, label: "Hospitals" },
@@ -35,21 +36,46 @@ export default function UIButtons() {
       icon: PiMapPinSimpleArea,
       label: "Connectivity",
     },
-    
   ];
 
-  useEffect(() => {
-    if (selectedCategory && buttonRefs.current[selectedCategory]) {
+  // Function to calculate and update position
+  const updatePathButtonsPosition = useCallback(() => {
+    if (selectedCategory && buttonRefs.current[selectedCategory] && categoryContainerRef.current) {
       const button = buttonRefs.current[selectedCategory];
-      const rect = button.getBoundingClientRect();
-      const container = button.closest(".flex.gap-2");
+      const container = categoryContainerRef.current;
+      
+      const buttonRect = button.getBoundingClientRect();
       const containerRect = container.getBoundingClientRect();
 
-      // Calculate position relative to the container
-      const leftPosition = rect.left - containerRect.left + rect.width / 2;
+      const leftPosition = buttonRect.left - containerRect.left + buttonRect.width / 2;
       setPathButtonsPosition({ left: leftPosition });
     }
   }, [selectedCategory]);
+
+  // Update position when selectedCategory changes
+  useEffect(() => {
+    updatePathButtonsPosition();
+  }, [selectedCategory, updatePathButtonsPosition]);
+
+  // Update position on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      updatePathButtonsPosition();
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [updatePathButtonsPosition]);
+
+  // Update position after short delay to ensure DOM is fully rendered
+  useEffect(() => {
+    if (selectedCategory) {
+      const timer = setTimeout(() => {
+        updatePathButtonsPosition();
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [selectedCategory, updatePathButtonsPosition]);
 
   // Animate path buttons appearing/disappearing
   useEffect(() => {
@@ -98,7 +124,10 @@ export default function UIButtons() {
       const isInsideContainer = containerRef.current && containerRef.current.contains(event.target);
       const isInsidePathCard = pathCardRef.current && pathCardRef.current.contains(event.target);
       
-      if (!isInsideContainer && !isInsidePathCard) {
+      // Check if click is on a portfolio card on the map
+      const isPortfolioCard = event.target.closest('[data-portfolio-card="true"]');
+
+      if (!isInsideContainer && !isInsidePathCard && !isPortfolioCard) {
         // Reset all button liquids
         Object.keys(liquidRefs.current).forEach((key) => {
           const liquid = liquidRefs.current[key];
@@ -300,10 +329,19 @@ export default function UIButtons() {
     return null;
   };
 
+  // Helper function to split items into columns
+  const splitIntoColumns = (items) => {
+    if (items.length <= 7) {
+      return [items];
+    }
+    const midPoint = Math.ceil(items.length / 2);
+    return [items.slice(0, midPoint), items.slice(midPoint)];
+  };
+
   return (
     <>
       {/* Path Card */}
-      {selectedPath && getCurrentPathData() && (
+      {selectedPath && getCurrentPathData() && selectedCategory !== "portfolio" && (
         <PathCard 
           path={getCurrentPathData()} 
           onClose={handleCloseCard}
@@ -312,12 +350,15 @@ export default function UIButtons() {
       )}
 
       <div
-        className="absolute bottom-8 z-50 left-1/2 -translate-x-1/2 max-sm:bottom-2 max-md:bottom-2 max-lg:bottom-2 max-xl:bottom-2 max-2xl:bottom-2"
+        className="absolute bottom-8 z-9999 left-1/2 -translate-x-1/2 max-sm:bottom-2 max-md:bottom-2 max-lg:bottom-2 max-xl:bottom-2 max-2xl:bottom-2"
         ref={containerRef}
       >
         {/* CATEGORY BUTTONS */}
 
-        <div className="flex gap-2 bg-white p-1 rounded-xs shadow-2xl text-[#4A5568] relative max-sm:gap-0.5 max-sm:p-0.5 max-md:gap-0.5 max-md:p-0.5 max-lg:gap-0.5 max-lg:p-1 max-xl:gap-0.5 max-xl:p-1">
+        <div 
+          ref={categoryContainerRef}
+          className="flex gap-2 bg-white p-1 rounded-xs shadow-2xl text-[#4A5568] relative max-sm:gap-0.5 max-sm:p-0.5 max-md:gap-0.5 max-md:p-0.5 max-lg:gap-0.5 max-lg:p-1 max-xl:gap-0.5 max-xl:p-1"
+        >
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -372,17 +413,24 @@ export default function UIButtons() {
           {selectedCategory && (
             <div
               ref={pathButtonsRef}
-              className="absolute bottom-full font-futura-medium  tracking-tight p-2 mb-2 bg-white text-[#4A5568] flex flex-col rounded-md shadow-2xl gap-2 -translate-x-1/2 max-sm:p-1 max-sm:gap-0.5 max-sm:rounded-xs max-md:p-1 max-md:gap-0.5 max-md:rounded-xs max-lg:p-1 max-lg:gap-0.5 max-lg:rounded-xs max-xl:p-2 max-xl:gap-0.5 max-xl:rounded-xs"
-              style={{ left: `${pathButtonsPosition.left}px` }}
+              className="absolute bottom-full font-futura-medium tracking-tight p-2 mb-2 bg-white text-[#4A5568] flex flex-row rounded-md shadow-2xl gap-2 max-sm:p-1 max-sm:gap-0.5 max-sm:rounded-xs max-md:p-1 max-md:gap-0.5 max-md:rounded-xs max-lg:p-1 max-lg:gap-0.5 max-lg:rounded-xs max-xl:p-2 max-xl:gap-0.5 max-xl:rounded-xs"
+              style={{ 
+                left: `${pathButtonsPosition.left}px`,
+                transform: 'translateX(-50%)'
+              }}
             >
-              {pathData[selectedCategory].map((item, i) => (
-                <button
-                  className={`p-2 rounded-md flex justify-center text-nowrap ${item.name === selectedPath ? 'bg-[#4A5568] text-white': 'hover:bg-gray-200'}  gap-2 items-center transition-colors max-sm:p-0.5 max-sm:rounded-xs max-sm:text-[7px] max-sm:gap-0.5 max-md:p-0.5 max-md:rounded-xs max-md:text-[10px] max-md:gap-0.5 max-lg:p-1 max-lg:rounded-xs max-lg:text-[14px] max-lg:gap-0.5 max-xl:p-1 max-xl:rounded-xs max-xl:text-[14px] max-xl:gap-0.5  max-2xl:p-2 max-2xl:rounded-sm max-2xl:text-[20px] max-2xl:gap-0.5`}
-                  key={i}
-                  onClick={() => handlePathClick(item.name)}
-                >
-                  {item.name}
-                </button>
+              {splitIntoColumns(pathData[selectedCategory]).map((column, colIndex) => (
+                <div key={colIndex} className="flex flex-col gap-2 max-sm:gap-0.5 max-md:gap-0.5 max-lg:gap-0.5 max-xl:gap-0.5">
+                  {column.map((item, i) => (
+                    <button
+                      className={`p-2 rounded-md flex justify-center text-nowrap ${item.name === selectedPath ? 'bg-[#4A5568] text-white': 'hover:bg-gray-200'}  gap-2 items-center transition-colors max-sm:p-0.5 max-sm:rounded-xs max-sm:text-[7px] max-sm:gap-0.5 max-md:p-0.5 max-md:rounded-xs max-md:text-[10px] max-md:gap-0.5 max-lg:p-1 max-lg:rounded-xs max-lg:text-[14px] max-lg:gap-0.5 max-xl:p-1 max-xl:rounded-xs max-xl:text-[14px] max-xl:gap-0.5  max-2xl:p-2 max-2xl:rounded-sm max-2xl:text-[20px] max-2xl:gap-0.5`}
+                      key={`${colIndex}-${i}`}
+                      onClick={() => handlePathClick(item.name)}
+                    >
+                      {item.name}
+                    </button>
+                  ))}
+                </div>
               ))}
             </div>
           )}

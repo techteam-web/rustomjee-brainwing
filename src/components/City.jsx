@@ -11,6 +11,7 @@ import AllPaths from "./AllPaths";
 import { NewBridges } from "./NewBridges";
 import { MainBuilding } from "./MainBuilding";
 import React from "react";
+import { RoadClickSampler } from "./Roadsampler";
 
  function City(props) {
   const { nodes, materials } = useGLTF("models/rustomjeeEditedmap2.glb");

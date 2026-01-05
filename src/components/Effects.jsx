@@ -12,6 +12,7 @@ import {
   Noise,
   Pixelation,
   Scanline,
+  SelectiveBloom,
   Sepia,
   SSAO,
   ToneMapping,
@@ -19,6 +20,7 @@ import {
 } from "@react-three/postprocessing";
 import { useControls } from "leva";
 import React from "react";
+import { BLOOM_LAYER } from "./MainBuilding";
 
 const Effects = () => {
   // Depth of Field Controls
@@ -431,6 +433,13 @@ const Effects = () => {
           contrast={bcControls.contrast}
         />
       )} */}
+      {/* <SelectiveBloom 
+        selectionLayer={BLOOM_LAYER}
+        intensity={1.0}
+        luminanceThreshold={0.4}
+        luminanceSmoothing={0.9}
+        radius={0.8}
+      /> */}
 
       <BrightnessContrast
         brightness={0}

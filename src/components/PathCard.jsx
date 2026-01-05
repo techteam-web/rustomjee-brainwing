@@ -144,7 +144,7 @@ useEffect(() => {
         internalCardRef.current = el;
         if (cardRef) cardRef.current = el;
       }}
-      className="absolute left-0 top-0 w-75 h-full flex flex-col justify-between bg-white rounded-md shadow-2xl overflow-hidden z-40 max-sm:w-27 max-sm:rounded-sm max-sm:justify-normal max-sm:gap-0 max-md:w-27 max-md:rounded-sm max-md:justify-normal max-md:gap-0 max-lg:w-48 max-lg:rounded-sm max-lg:justify-normal max-lg:gap-0 max-xl:w-55 max-xl:rounded-sm max-xl:justify-normal max-xl:gap-0 max-3xl:w-80 max-4xl:w-100 max-4xl:justify-stretch"
+      className="absolute left-0 top-0 w-75 h-full flex flex-col justify-between bg-white rounded-md shadow-2xl overflow-hidden z-9999 max-sm:w-27 max-sm:rounded-sm max-sm:justify-normal max-sm:gap-0 max-md:w-27 max-md:rounded-sm max-md:justify-normal max-md:gap-0 max-lg:w-48 max-lg:rounded-sm max-lg:justify-normal max-lg:gap-0 max-xl:w-55 max-xl:rounded-sm max-xl:justify-normal max-xl:gap-0 max-3xl:w-80 max-4xl:w-100 max-4xl:justify-stretch"
     >
       {/* Close Button */}
       <button
