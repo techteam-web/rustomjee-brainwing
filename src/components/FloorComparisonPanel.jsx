@@ -1384,7 +1384,7 @@ export default function FloorComparisonPanel({
         {/* Close Button - RESPONSIVE */}
         <button
           onClick={handleClose}
-          className={`absolute top-2 sm:top-4 z-20 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-[#C7BED6] hover:bg-[#B0A5C5] rounded-full transition-all duration-500 cursor-pointer ${
+          className={`absolute top-2 sm:top-4 z-20 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-black/50 hover:bg-black/70 rounded-full transition-all duration-500 cursor-pointer ${
             isRightPanelHidden ? "right-2 sm:right-4" : "right-2 sm:right-4"
           }`}
         >
