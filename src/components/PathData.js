@@ -604,7 +604,7 @@ export const pathData = {
       ],
     },
     {
-      name: " La Solita",
+      name: "Rustomjee La Solita",
       description:
         "Rustomjee La Solita is a value for money Project developed by one of the Mumbai well known Developers Rustomjee.",
       distance: 2.0,

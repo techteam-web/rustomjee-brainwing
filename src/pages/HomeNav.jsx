@@ -21,11 +21,11 @@ const HomeNav = () => {
         />
 
         {/* Logo - Top Center */}
-        <div className="absolute top-3 sm:top-10 sm:left-50 md:top-10 md:left-60 lg:left-1/2 -translate-x-1/2 z-40 cursor-pointer hover:scale-105 transition-transform duration-300 font-balgin font-bold uppercase flex flex-col ">
+        <div className="absolute top-3 sm:top-10 sm:left-50 md:top-10 md:left-60 xl:top-0 lg:left-1/2 -translate-x-1/2 z-40 cursor-pointer hover:scale-105 transition-transform duration-300 font-balgin font-bold uppercase flex flex-col ">
           <img
             src="/images/Cliff-tower.png"
             alt="Rustomjee"
-            className={`w-auto h-12 sm:h-20 md:h-25 lg:h-26 xl:h-35 2xl:h-40 3xl:h-60 4xl:h-90`}
+            className={`w-auto h-12 sm:h-20 md:h-25 lg:h-30 xl:h-35 2xl:h-40 3xl:h-60 4xl:h-90`}
           />
         </div>
 
