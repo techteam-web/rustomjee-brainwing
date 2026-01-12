@@ -130,11 +130,11 @@ const UNIT_PLAN_SVG_CONFIG = {
     ],
   },
   // For 18th, 19th, 20th floors - no SVG regions (balcony views coming later)
-  "18th": {
+  "20th": {
   totalPoints: 4,
   regions: [
     {
-      id: "18th_1st",
+      id: "20th_1st",
       point: 1,
       viewBox: "0 0 121.71675 38.157799",
       transform: "translate(-161.16494,14.649136)",
@@ -143,7 +143,7 @@ const UNIT_PLAN_SVG_CONFIG = {
       position: { top: "14.8%", left: "52.2%", width: "21.85%" },
     },
     {
-      id: "18th_2nd",
+      id: "20th_2nd",
       point: 2,
       viewBox: "0 0 47.539764 51.818043",
       transform: "translate(-120.66147,-8.8310401)",
@@ -152,7 +152,7 @@ const UNIT_PLAN_SVG_CONFIG = {
       position: { top: "21.2%", left: "45%", width: "8.56%" },
     },
     {
-      id: "18th_3rd",
+      id: "20th_3rd",
       point: 3,
       viewBox: "0 0 13.233574 36.166428",
       transform: "translate(-51.833337,-169.36015)",
@@ -161,7 +161,7 @@ const UNIT_PLAN_SVG_CONFIG = {
       position: { top: "64%", left: "32.73%", width: "2.45%" },
     },
     {
-      id: "18th_4th",
+      id: "20th_4th",
       point: 4,
       viewBox: "0 0 12.303158 33.710907",
       transform: "translate(-36.781262,-205.52947)",
@@ -173,11 +173,11 @@ const UNIT_PLAN_SVG_CONFIG = {
 },
   // 19th floor config - copy this into your UNIT_PLAN_SVG_CONFIG
 
-"19th": {
+"18th": {
   totalPoints: 4,
   regions: [
     {
-      id: "19th_1st",
+      id: "18th_1st",
       point: 1,
       viewBox: "0 0 121.71392 45.944496",
       transform: "translate(-108.40104,-1.985541)",
@@ -186,7 +186,7 @@ const UNIT_PLAN_SVG_CONFIG = {
       position: { top: "14.8%", left: "52.2%", width: "21.85%" },
     },
     {
-      id: "19th_2nd",
+      id: "18th_2nd",
       point: 2,
       viewBox: "0 0 40.537605 53.194031",
       transform: "translate(-67.835992,-25.488807)",
@@ -195,7 +195,7 @@ const UNIT_PLAN_SVG_CONFIG = {
       position: { top: "21.2%", left: "45%", width: "7.3%" },
     },
     {
-      id: "19th_3rd",
+      id: "18th_3rd",
       point: 3,
       viewBox: "0 0 31.676308 13.615387",
       transform: "translate(-56.345498,-110.94788)",
@@ -204,7 +204,7 @@ const UNIT_PLAN_SVG_CONFIG = {
       position: { top: "44%", left: "43%", width: "5.6%" },
     },
     {
-      id: "19th_4th",
+      id: "18th_4th",
       point: 4,
       viewBox: "0 0 12.288028 32.080673",
       transform: "translate(14.279734,-223.80049)",
@@ -216,11 +216,11 @@ const UNIT_PLAN_SVG_CONFIG = {
 },
   // 20th floor config - copy this into your UNIT_PLAN_SVG_CONFIG
 
-"20th": {
+"19th": {
   totalPoints: 4,
   regions: [
     {
-      id: "20th_1st",
+      id: "19th_1st",
       point: 1,
       viewBox: "0 0 59.551178 10.392628",
       transform: "translate(-111.09476,30.521934)",
@@ -229,7 +229,7 @@ const UNIT_PLAN_SVG_CONFIG = {
       position: { top: "24.3%", left: "57.8%", width: "10.7%" },
     },
     {
-      id: "20th_2nd",
+      id: "19th_2nd",
       point: 2,
       viewBox: "0 0 40.368641 53.211979",
       transform: "translate(-39.52612,42.129889)",
@@ -238,7 +238,7 @@ const UNIT_PLAN_SVG_CONFIG = {
       position: { top: "21.2%", left: "45%", width: "7.3%" },
     },
     {
-      id: "20th_3rd",
+      id: "19th_3rd",
       point: 3,
       viewBox: "0 0 40.34021 13.680737",
       transform: "translate(-27.932862,-43.262469)",
@@ -247,7 +247,7 @@ const UNIT_PLAN_SVG_CONFIG = {
       position: { top: "44%", left: "43%", width: "7.34%" },
     },
     {
-      id: "20th_4th",
+      id: "19th_4th",
       point: 4,
       viewBox: "0 0 13.950108 33.663116",
       transform: "translate(44.405252,-154.60209)",
