@@ -3,7 +3,6 @@ import { IoHomeOutline } from "react-icons/io5";
 import { MdOutline360, MdOutlineInventory } from "react-icons/md";
 import { GrGallery } from "react-icons/gr";
 import { FloorPlanIcon } from "./Icons";
-import { TbStack } from "react-icons/tb";
 import { LuMapPin } from "react-icons/lu";
 import { useNavigate } from 'react-router-dom';
 
@@ -12,8 +11,8 @@ const NavigationBar = forwardRef(({
   iconSize = "text-xl xl:text-2xl",
   gap = "gap-5",
   padding = "p-2 py-2 xl:p-4",
-  bgColor = "bg-white",
-  textColor = "text-gray-500",
+  bgColor = "",
+  textColor = "text-white",
   position = "absolute bottom-[0.3vw] left-1/2 -translate-x-1/2",
   showIcons = {
     home: true,
@@ -55,6 +54,10 @@ const NavigationBar = forwardRef(({
     <div
       ref={ref}
       className={`${position} z-50 opacity-0 flex ${gap} xl:gap-15 xl:px-6 items-center ${padding} rounded-xs ${bgColor} ${textColor} ${className}`}
+      style={{
+        backdropFilter: "blur(7px)",
+        backgroundColor: "rgba(255, 255, 255, 0.10)",
+      }}
     >
       {iconConfig.map(({ key, Icon, label, route, show, isCustom, isExternal }) => (
         show && (
@@ -75,12 +78,12 @@ const NavigationBar = forwardRef(({
             />
             
             <span
-              className={`absolute -bottom-3 whitespace-nowrap text-xs font-medium transition-all duration-200 ${
+              className={`absolute -bottom-3  whitespace-nowrap pb-1 text-sm font-futura-medium tracking-wider transition-all duration-200 ${
                 hoveredIcon === key
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 -translate-y-1 pointer-events-none'
               }`}
-              style={{ color: '#3b4b9f' }}
+              style={{ color: '#ffff' }}
             >
               {label}
             </span>

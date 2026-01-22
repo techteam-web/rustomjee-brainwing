@@ -301,7 +301,7 @@ const Home = () => {
       <Loader>
         {scrollEnabled && <ReactLenis root options={{ duration: 3 }} />}
         
-        <div ref={container} className="w-full overflow-hidden bg-[#dedbd4]">
+        <div ref={container} className="w-full overflow-hidden bg-[#dedbd4] font-futura-medium tracking-wider">
           
           {/* --- SECTION 1: INTRO --- */}
           <section ref={section1} className="w-full relative overflow-hidden z-10 -mb-[28vh]">
@@ -342,8 +342,8 @@ const Home = () => {
                   {/* Intro Text 1 */}
                   <h1 
                     ref={introText1} 
-                    className="absolute bottom-0 w-full text-center text-4xl max-md:text-2xl max-lg:text-2xl max-xl:text-3xl 3xl:text-4xl 4xl:text-6xl text-white opacity-0 uppercase font-bold" 
-                    style={{ fontFamily: "Balgin, sans-serif" }}
+                    className="absolute bottom-0 w-full text-center text-4xl max-md:text-2xl max-lg:text-2xl max-xl:text-3xl 3xl:text-4xl 4xl:text-6xl text-white opacity-0 uppercase" 
+                     
                   >
                     A quiet statement perched above the tides of time.
                   </h1>
@@ -351,8 +351,8 @@ const Home = () => {
                   {/* Intro Text 2 */}
                   <h1 
                     ref={introText2} 
-                    className="absolute bottom-0 w-full text-center text-4xl max-md:text-2xl max-lg:text-2xl 3xl:text-4xl 4xl:text-6xl text-white opacity-0 uppercase font-bold" 
-                    style={{ fontFamily: "Balgin, sans-serif" }}
+                    className="absolute bottom-0 w-full text-center text-4xl max-md:text-2xl max-lg:text-2xl 3xl:text-4xl 4xl:text-6xl text-white opacity-0 uppercase " 
+                     
                   >
                     Where the sea tells its secrets
                   </h1>
@@ -363,7 +363,7 @@ const Home = () => {
                     className={`scroll-indicator absolute bottom-0 w-full flex flex-col items-center opacity-0 cursor-pointer ${scrollEnabled? 'pointer-events-auto': 'pointer-events-none'}`}
                     onClick={() => gsap.to(window, { duration: 2, scrollTo: dreamInBandra.current, ease: "power3.inOut" })}
                   >
-                    <p className="uppercase max-md:text-xl font-bold w-full text-center text-2xl 3xl:text-4xl 4xl:text-6xl text-white">Scroll</p>
+                    <p className="uppercase max-md:text-xl  w-full text-center text-2xl 3xl:text-4xl 4xl:text-6xl text-white">Scroll</p>
                     <div className="flex flex-col -space-y-5 4xl:-space-y-13">
                       <svg className="w-7 h-7 xl:w-8 xl:h-8 max-md:w-5 4xl:w-20 4xl:h-20" fill="white" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/></svg>
                       <svg className="w-7 h-7 xl:w-8 xl:h-8 max-md:w-5 4xl:w-20 4xl:h-20" fill="white" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/></svg>
@@ -379,8 +379,8 @@ const Home = () => {
               >
                 <h1
                   ref={midText}
-                  className="font-bold text-5xl max-md:text-2xl tracking-wider max-lg:text-2xl 3xl:text-7xl 4xl:text-[120px] text-[#ffffff] opacity-0 text-center uppercase"
-                  style={{ fontFamily: "Balgin, sans-serif" }}
+                  className=" text-5xl max-md:text-2xl tracking-wider max-lg:text-2xl 3xl:text-7xl 4xl:text-[120px] text-[#ffffff] opacity-0 text-center uppercase"
+                   
                 >
                   A DREAM IN BANDRA
                 </h1>
@@ -400,7 +400,7 @@ const Home = () => {
           <section ref={section3} className="w-full h-auto relative overflow-hidden z-20">
             <div
               ref={bottomLogo}
-              className="absolute top-120 max-md:top-55 max-lg:top-100 3xl:top-210 4xl:top-380 3xl:text-7xl 4xl:text-9xl left-1/2 overflow-hidden -translate-x-1/2 text-5xl max-md:text-2xl max-lg:text-2xl text-black font-bold text-center z-30 opacity-0 mt-10"
+              className="absolute top-120 max-md:top-55 max-lg:top-100 3xl:top-210 4xl:top-380 3xl:text-7xl 4xl:text-9xl left-1/2 overflow-hidden -translate-x-1/2 text-5xl max-md:text-2xl max-lg:text-2xl text-black text-center z-30 opacity-0 mt-10"
             >
               <img src="/images/Cliff-tower.png" alt="Logo" className="h-60 w-auto max-md:h-20 max-lg:h-30  3xl:h-70 4xl:h-80 mx-auto mb-4 " />
               

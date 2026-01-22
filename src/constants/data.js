@@ -305,7 +305,7 @@ export const type1SlidesData = [
 
     // ✅ Top-left text
     title: {
-      text: "AN ADDRESS THE SKYLINE WILL REMEMBER.",
+      text: "",
       className:
         "text-black text-4xl md:text-4xl font-light tracking-wide leading-tight",
     },

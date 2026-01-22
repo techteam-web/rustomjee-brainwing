@@ -6,6 +6,8 @@ import RadarViewIndicator, {
   getRadarPositionConfig,
 } from "./RadarViewIndicator";
 
+
+
 // Unit Plan SVG Configuration for each floor type
 // Each entry contains the SVG paths and their corresponding balcony view points
 const UNIT_PLAN_SVG_CONFIG = {
@@ -419,7 +421,7 @@ function BalconyPointTabs({
   };
 
   return (
-    <div className="absolute sm:top-0 right-0 z-30 flex justify-end sm:left-0 sm:right-0 sm:justify-center lg:top-10 xl:top-0">
+    <div className="absolute sm:top-0 right-0 z-30 flex justify-end sm:left-0 sm:right-0 sm:justify-center lg:top-10 xl:top-0 font-futura-medium">
       <div className="flex bg-white/90 backdrop-blur-sm rounded-bl-lg sm:rounded-b-lg shadow-md overflow-hidden">
         {Array.from({ length: maxPoints }, (_, i) => i + 1).map(
           (point, index) => {
@@ -435,7 +437,7 @@ function BalconyPointTabs({
                 onClick={() => handleTabClick(point)}
                 disabled={!isInteractive || !isAvailable}
                 className={`
-                relative px-2 py-1 text-xs sm:px-4 sm:py-2 sm:text-sm font-medium transition-all duration-200
+                relative px-2 py-1 text-xs sm:px-4 sm:py-2 sm:text-sm  transition-all duration-200
                 ${
                   isInteractive && isAvailable
                     ? "cursor-pointer"
@@ -565,7 +567,7 @@ function BalconyViewCarousel({
   };
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full font-futura-medium">
       {/* Balcony Point Tabs - aligned right on mobile */}
       <BalconyPointTabs
         currentPoint={currentPoint}
@@ -612,7 +614,7 @@ function BalconyViewCarousel({
                     />
                   </svg>
                 </div>
-                <h4 className="text-gray-800 font-semibold text-xs sm:text-sm mb-1">
+                <h4 className="text-gray-800  text-xs sm:text-sm mb-1">
                   View Not Available
                 </h4>
                 <p className="text-gray-500 text-[10px] sm:text-xs">
@@ -708,9 +710,9 @@ function PlanTypeToggle({ isUnitPlan, onToggle, borderColor = "#C19A40" }) {
   };
 
   return (
-    <div className="flex items-center gap-1 sm:gap-2">
+    <div className="flex items-center gap-1 sm:gap-2 font-futura-medium">
       <span
-        className={`text-[9px] sm:text-xs font-medium transition-colors uppercase ${
+        className={`text-[9px] sm:text-xs  transition-colors uppercase ${
           !isUnitPlan ? "text-gray-800" : "text-gray-400"
         }`}
       >
@@ -733,7 +735,7 @@ function PlanTypeToggle({ isUnitPlan, onToggle, borderColor = "#C19A40" }) {
         />
       </button>
       <span
-        className={`text-[9px] sm:text-xs font-medium transition-colors uppercase ${
+        className={`text-[9px] sm:text-xs transition-colors uppercase ${
           isUnitPlan ? "text-gray-800" : "text-gray-400"
         }`}
       >
@@ -785,6 +787,22 @@ export default function FloorComparisonPanel({
   const headerRef = useRef(null);
   const contentWrapperRef = useRef(null);
   const gridRef = useRef(null);
+  // ADD THIS LINE - Preload click sound
+const clickSoundRef = useRef(null);
+
+// ADD THIS useEffect - Preload click sound
+useEffect(() => {
+  clickSoundRef.current = new Audio('/audio/Click.mp3');
+  clickSoundRef.current.volume = 0.3;
+}, []);
+
+// ADD THIS function - Play click sound
+const playClickSound = () => {
+  if (clickSoundRef.current) {
+    clickSoundRef.current.currentTime = 0;
+    clickSoundRef.current.play().catch(() => {});
+  }
+};
 
   const getFloorType = (floorNumber) => {
     const floor = parseInt(floorNumber);
@@ -862,6 +880,7 @@ export default function FloorComparisonPanel({
   };
 
   const handleFirstFloorPlanToggle = () => {
+    playClickSound(); // ADD THIS LINE
     const newValue = !firstFloorIsUnitPlan;
     setFirstFloorIsUnitPlan(newValue);
     setFirstFloorViewMode(newValue ? "unitplan" : "floorplan");
@@ -876,6 +895,7 @@ export default function FloorComparisonPanel({
   };
 
   const handleSecondFloorPlanToggle = () => {
+    playClickSound();
     const newValue = !secondFloorIsUnitPlan;
     setSecondFloorIsUnitPlan(newValue);
     setSecondFloorViewMode(newValue ? "unitplan" : "floorplan");
@@ -1372,10 +1392,11 @@ export default function FloorComparisonPanel({
     : "multiple";
   const firstFloorTotalPoints = getTotalBalconyPoints(firstFloorType);
   const secondFloorTotalPoints = getTotalBalconyPoints(secondFloorType);
+
   return createPortal(
     <div
       ref={overlayRef}
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 font-futura-medium"
     >
       <div
         ref={panelRef}
@@ -1419,7 +1440,7 @@ export default function FloorComparisonPanel({
               <div className="flex items-center gap-2 sm:gap-4 md:gap-6">
                 <h3
                   ref={headerRef}
-                  className="font-bold text-[#000000] text-sm sm:text-xl md:text-3xl"
+                  className=" text-[#000000] text-sm sm:text-xl md:text-3xl"
                   style={{ fontSize: "1.875rem" }}
                 >
                   {hasBothFloors ? (
@@ -1833,7 +1854,7 @@ export default function FloorComparisonPanel({
               ) : (
                 <div className="flex flex-col items-center justify-center h-full text-center bg-[#E8F4FE] rounded-lg border-2 border-[#C4E0FD]">
                   <div className="bg-white p-4 sm:p-8 rounded-lg shadow-sm">
-                    <h4 className="text-base sm:text-xl font-semibold text-[#000000] mb-2">
+                    <h4 className="text-base sm:text-xl text-[#000000] mb-2">
                       {firstFloor
                         ? "Select a Floor to Compare"
                         : "Select Floors from Building"}
@@ -1987,7 +2008,7 @@ export default function FloorComparisonPanel({
                 </div>
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center pointer-events-none">
-                  <span className="text-white text-[10px] sm:text-sm font-medium bg-black/50 px-2 py-1 sm:px-3 sm:py-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="text-white text-[10px] sm:text-sm  bg-black/50 px-2 py-1 sm:px-3 sm:py-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                     Click to view Unit Plan
                   </span>
                 </div>

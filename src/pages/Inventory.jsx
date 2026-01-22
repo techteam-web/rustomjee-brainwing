@@ -105,7 +105,7 @@ export default function Inventory() {
     <>
     <OrientationLock />
     <Loader>
-    <div className="fixed inset-0 w-full h-full overflow-hidden bg-[#dedbd4]">
+    <div className="fixed inset-0 w-full h-full overflow-hidden bg-[#dedbd4] font-futura-medium">
       {/* Logo */}
       <div className="fixed top-4 right-10 z-40">
         <img 

@@ -207,7 +207,7 @@ const Views = () => {
   };
 
   return (
-    <div className="w-full h-screen relative bg-[#1a1a1a]">
+    <div className="w-full h-screen relative bg-[#1a1a1a] font-futura-medium tracking-widest">
       {/* Close Button - Top Right */}
       <button
         onClick={handleClose}
@@ -233,7 +233,7 @@ const Views = () => {
       {/* Title - Top Left */}
       <div className="absolute top-6 left-6 z-50">
         <div className="bg-white px-4 py-2 rounded-md shadow-lg">
-          <h1 className="text-[#4A5568] text-lg font-medium tracking-wider uppercase">
+          <h1 className="text-[#4A5568] text-lg uppercase">
             360° View
           </h1>
         </div>
@@ -284,7 +284,7 @@ const Views = () => {
               </svg>
               <span
                 ref={(el) => (textRefs.current["0-day"] = el)}
-                className="text-xs text-center uppercase tracking-tight font-medium z-10"
+                className="text-sm text-center uppercase z-10"
                 style={{ color: "#4A5568" }}
               >
                 Day
@@ -318,7 +318,7 @@ const Views = () => {
               </svg>
               <span
                 ref={(el) => (textRefs.current["1-sunset"] = el)}
-                className="text-xs text-center uppercase tracking-tight font-medium z-10"
+                className="text-sm text-center uppercase z-10"
                 style={{ color: "#4A5568" }}
               >
                 Sunset
@@ -331,7 +331,7 @@ const Views = () => {
       {/* Drag Hint - Bottom Left */}
       {isLoaded && (
         <div className="absolute bottom-8 left-6 z-50">
-          <div className="bg-white/90 backdrop-blur-sm px-3 py-2 rounded-md flex items-center gap-2 text-[#4A5568] text-xs tracking-wider uppercase shadow-lg">
+          <div className="bg-white/90 backdrop-blur-sm px-3 py-2 rounded-md flex items-center gap-2 text-[#4A5568] text-sm uppercase shadow-lg">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-4 h-4"
