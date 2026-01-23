@@ -17,6 +17,13 @@ CustomEase.create(
   "M0,0 C0.083,0.294 0.117,0.767 0.413,0.908 0.606,1 0.752,1 1,1 "
 );
 
+// Helper function to check if a source is a video
+const isVideo = (src) => {
+  if (!src) return false;
+  const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov'];
+  return videoExtensions.some(ext => src.toLowerCase().endsWith(ext));
+};
+
 export default function StorySlider({
   slides = slidesData,
   duration = 2.0,
@@ -405,9 +412,11 @@ export default function StorySlider({
   });
 
   const renderSlideContent = (slide) => {
+    const slideIsVideo = isVideo(slide.src);
+
     return (
       <div className="slide-content absolute top-0 left-0 w-screen h-screen bg-black flex items-center justify-center">
-        {/* Image Layer */}
+        {/* Media Layer - Video or Image */}
         {slide.revealImage ? (
           <>
             <ImageContainer
@@ -428,7 +437,7 @@ export default function StorySlider({
             />
             {/* Click to Transition Indicator - Only for shader images */}
             <div className="absolute bottom-24 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 pointer-events-none">
-              <div className="flex flex-col items-center gap-4 animate-pulse  px-6 py-4 rounded-full">
+              <div className="flex flex-col items-center gap-4 animate-pulse px-6 py-4 rounded-full">
                 <svg
                   className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
                   fill="none"
@@ -448,11 +457,27 @@ export default function StorySlider({
               </div>
             </div>
           </>
+        ) : slideIsVideo ? (
+          // Video element - muted, looped, autoplay, responsive
+          <video
+            src={slide.src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover"
+            style={{
+              pointerEvents: "none",
+              userSelect: "none",
+            }}
+          />
         ) : (
+          // Image element
           <img
             src={slide.src}
             alt={`Slide ${slide.id}`}
-            className="w-full max-h-full object-cover"
+            className="w-full h-full object-cover"
             style={{
               pointerEvents: "none",
               userSelect: "none",
@@ -462,8 +487,8 @@ export default function StorySlider({
 
         {/* Title - Left Bottom */}
         {slide.title && (
-          <div className="absolute left-30 max-sm:left-10 max-sm:bottom-10 max-md:left-20 max-md:bottom-10 bottom-40 z-30">
-            <h2 className="slide-title text-white tracking-wide font-futura-medium text-xl sm:text-2xl lg:text-4xl  uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] opacity-0">
+          <div className="absolute left-6 sm:left-10 md:left-20 lg:left-30 bottom-16 sm:bottom-20 md:bottom-28 lg:bottom-40 z-30">
+            <h2 className="slide-title text-white tracking-wide font-futura-medium text-lg sm:text-xl md:text-2xl lg:text-4xl uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] opacity-0">
               {slide.title}
             </h2>
           </div>
@@ -493,17 +518,17 @@ export default function StorySlider({
             <img
               src="/images/logo.svg"
               alt="Rustomjee"
-              className="h-12 w-auto"
+              className="h-8 sm:h-10 md:h-12 w-auto"
             />
           </div>
 
           {/* Close Button - Top Right */}
           <button
             onClick={() => navigate("/home")}
-            className="fixed top-4 right-4 z-50 w-12 h-12 flex items-center justify-center bg-black/40 backdrop-blur-sm hover:bg-[#1d2938] rounded-full transition-all duration-300 cursor-pointer group"
+            className="fixed top-4 right-4 z-50 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-black/40 backdrop-blur-sm hover:bg-[#1d2938] rounded-full transition-all duration-300 cursor-pointer group"
           >
             <svg
-              className="w-6 h-6 text-white group-hover:scale-110 transition-transform"
+              className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -529,7 +554,7 @@ export default function StorySlider({
               </div>
             ))}
 
-            <div className="bottom-6 w-[90%] sm:w-[50%] px-4 sm:px-12 absolute left-1/2 -translate-x-1/2 z-50">
+            <div className="bottom-4 sm:bottom-6 w-[90%] sm:w-[70%] md:w-[60%] lg:w-[50%] px-4 sm:px-12 absolute left-1/2 -translate-x-1/2 z-50">
               <div className="relative w-full h-1 bg-white/30 rounded-none overflow-hidden opacity-50">
                 <div
                   className="h-full bg-white transition-all duration-300 ease-out rounded-none"

@@ -164,7 +164,7 @@ export const data = [
 export const slidesData = [
   {
     id: 21,
-    src: "/images/3.6.1.jpg",
+    src: "/video/1.mp4",
     category: "exterior",
     title: "Quiet Approach",
   },
@@ -176,7 +176,7 @@ export const slidesData = [
   },
   {
     id: 1,
-    src: "/images/1.1.1.jpg",
+    src: "/video/3.mp4",
     category: "amenities",
     title: "Private Drive",
   },
@@ -224,7 +224,7 @@ export const slidesData = [
   },
   {
     id: 11,
-    src: "/images/2.1.1.jpg",
+    src: "/video/11.mp4",
     category: "apartment",
     title: "Ocean Side Living",
   },

@@ -13,8 +13,20 @@ gsap.registerPlugin(useGSAP, CustomEase);
 // Create custom ease
 CustomEase.create(
   "hop",
-  "M0,0 C0.083,0.294 0.117,0.767 0.413,0.908 0.606,1 0.752,1 1,1"
+  "M0,0 C0.083,0.294 0.117,0.767 0.413,0.908 0.606,1 0.752,1 1,1",
 );
+
+// ============================================
+// BREAKPOINT REFERENCE (update your tailwind config)
+// ============================================
+// sm: 640px    - Large phones landscape
+// md: 768px    - Small tablets landscape
+// lg: 1024px   - iPad Pro & tablets landscape
+// xl: 1280px   - Small laptops / large tablets
+// 2xl: 1536px  - Your 1080p GOLDEN STANDARD (1920x1080)
+// 3xl: 2560px  - 2K monitors
+// 4xl: 3840px  - 4K monitors
+// ============================================
 
 // ============================================
 // CLOSE BUTTON COMPONENT
@@ -52,10 +64,6 @@ const CloseButton = () => {
 
 // ============================================
 // ACCENT SQUARES COMPONENT (Reusable)
-// Renders 2 color squares + 1 seaBox image
-// Position of seaBox depends on squaresPosition prop
-// - "left" = squares on left side of page, seaBox on rightmost
-// - "right" = squares on right side of page, seaBox on leftmost
 // ============================================
 const AccentSquares = ({ accentSquares, seaBoxSrc, squaresPosition }) => {
   if (!accentSquares) return null;
@@ -63,14 +71,15 @@ const AccentSquares = ({ accentSquares, seaBoxSrc, squaresPosition }) => {
   const isLeft = squaresPosition === "left";
 
   return (
-    <div className={`flex ${isLeft ? 'justify-start' : 'justify-end'} gap-0.5 sm:gap-1`}>
+    <div
+      className={`flex ${isLeft ? "justify-start" : "justify-end"} gap-0.5 sm:gap-1`}
+    >
       {isLeft ? (
-        // Squares on LEFT side of page: [color1] [color2] [seaBox]
         <>
           {accentSquares.map((color, index) => (
             <div
               key={index}
-              className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 text-element"
+              className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-5 lg:h-5 xl:w-6 xl:h-6 2xl:w-8 2xl:h-8 3xl:w-10 3xl:h-10 4xl:w-14 4xl:h-14 text-element"
               style={{ backgroundColor: color }}
             />
           ))}
@@ -78,24 +87,23 @@ const AccentSquares = ({ accentSquares, seaBoxSrc, squaresPosition }) => {
             <img
               src={seaBoxSrc}
               alt=""
-              className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 object-cover text-element"
+              className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-5 lg:h-5 xl:w-6 xl:h-6 2xl:w-8 2xl:h-8 3xl:w-10 3xl:h-10 4xl:w-14 4xl:h-14 object-cover text-element"
             />
           )}
         </>
       ) : (
-        // Squares on RIGHT side of page: [seaBox] [color1] [color2]
         <>
           {seaBoxSrc && (
             <img
               src={seaBoxSrc}
               alt=""
-              className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 object-cover text-element"
+              className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-5 lg:h-5 xl:w-6 xl:h-6 2xl:w-8 2xl:h-8 3xl:w-10 3xl:h-10 4xl:w-14 4xl:h-14 object-cover text-element"
             />
           )}
           {accentSquares.map((color, index) => (
             <div
               key={index}
-              className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 text-element"
+              className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-5 lg:h-5 xl:w-6 xl:h-6 2xl:w-8 2xl:h-8 3xl:w-10 3xl:h-10 4xl:w-14 4xl:h-14 text-element"
               style={{ backgroundColor: color }}
             />
           ))}
@@ -106,25 +114,56 @@ const AccentSquares = ({ accentSquares, seaBoxSrc, squaresPosition }) => {
 };
 
 // ============================================
-// SLIDE TYPE: splitBackground (Slide 1) - UPDATED LAYOUT
-// Matches the brochure exactly: Single background, image left-center, text right-aligned
+// HELPER: Render paragraphs with exact line breaks
+// ============================================
+const renderParagraphs = (
+  paragraphs,
+  alignment = "right",
+  textSizeClass = "text-[5px] sm:text-[6px] md:text-[7px] lg:text-[8px] xl:text-[10px] 2xl:text-[14px] 3xl:text-[18px] 4xl:text-[24px]",
+) => {
+  if (!paragraphs) return null;
+
+  return paragraphs.map((paragraph, pIndex) => (
+    <div key={pIndex} className="text-element">
+      {paragraph.lines ? (
+        paragraph.lines.map((line, lIndex) => (
+          <p
+            key={lIndex}
+            className={`text-black ${textSizeClass} font-futura-bk leading-relaxed text-${alignment}`}
+          >
+            {line}
+          </p>
+        ))
+      ) : (
+        <p
+          className={`text-black ${textSizeClass} font-futura-bk leading-relaxed text-${alignment}`}
+        >
+          {paragraph}
+        </p>
+      )}
+    </div>
+  ));
+};
+
+// ============================================
+// SLIDE TYPE: splitBackground (Slide 1)
 // ============================================
 const SplitBackgroundSlide = ({ data }) => {
   return (
     <div className="relative w-full h-full">
       {/* Single Background covering entire slide */}
-      <img
+      {/* <img
         src={data.rightSection.backgroundSrc}
-        className="object-cover w-full h-full absolute inset-0"
+        className="object-contain w-full h-full absolute inset-0"
         alt=""
-      />
+      /> */}
 
       {/* Content Layer */}
       <div className="absolute inset-0 flex">
         {/* Left Section - Image (vertically centered) */}
-        <div className="w-[38%] sm:w-[40%] md:w-[42%] lg:w-[45%] xl:w-[45%] relative h-full flex items-center justify-start">
-          {/* Person Image with hover effect - positioned left-center */}
-          <div className="h-[55%] sm:h-[58%] md:h-[60%] lg:h-[65%] xl:h-[70%] w-full overflow-hidden group">
+        <div className="w-[38%] sm:w-[38%] md:w-[40%] lg:w-[42%] xl:w-[40%] 2xl:w-[35%] 3xl:w-[35%] 4xl:w-[35%] relative h-full flex items-center justify-start">
+          {/* Person Image with hover effect */}
+          <div className="h-[50%] sm:h-[52%] md:h-[55%] lg:h-[55%] xl:h-[52%] 2xl:h-[50%] 3xl:h-[50%] 4xl:h-[50%] w-full overflow-hidden group">
             <img
               src={data.leftSection.imageSrc}
               className="w-full h-full object-cover object-[50%_30%] text-element transition-all duration-700 ease-out group-hover:scale-105"
@@ -136,71 +175,46 @@ const SplitBackgroundSlide = ({ data }) => {
         </div>
 
         {/* Right Section - Text Content */}
-        <div className="w-[62%] sm:w-[60%] md:w-[58%] lg:w-[55%] xl:w-[55%] relative h-full">
+        <div className="w-[62%] sm:w-[62%] md:w-[60%] lg:w-[58%] xl:w-[60%] 2xl:w-[60%] 3xl:w-[60%] 4xl:w-[60%] absolute h-full right-0">
           {/* Content Container - Right aligned text */}
-          <div className="h-full px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 xl:px-14 xl:py-16 flex flex-col justify-between">
-            
-            {/* Top Section - Heading (keeping original heading) */}
-            <div className="text-right">
-              <h2 className="text-black text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-futura-md tracking-wide text-element">
-                {data.rightSection.topText}
-              </h2>
-              <p className="text-black text-[9px] sm:text-[10px] md:text-xs lg:text-sm xl:text-base font-futura-md tracking-wide opacity-70 mt-0.5 sm:mt-1 whitespace-pre-line text-element">
-                {data.rightSection.topSubtext}
-              </p>
-            </div>
-
-            {/* Middle Section - Paragraphs */}
-            <div className="flex-1 flex flex-col justify-center py-2 sm:py-3 md:py-4 lg:py-6">
-              <div className="text-right space-y-2 sm:space-y-2.5 md:space-y-3 lg:space-y-4 xl:space-y-5">
-                {data.rightSection.paragraphs?.map((paragraph, index) => (
-                  <p 
-                    key={index} 
-                    className="text-black text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs xl:text-sm font-futura-md leading-relaxed text-element"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
+          <div className="h-full px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-14 2xl:py-16 3xl:px-20 3xl:py-20 4xl:px-28 4xl:py-28 flex flex-col justify-between">
+            {/* Middle Section - Paragraphs with exact line breaks */}
+            <div className="relative flex-1 flex flex-col justify-center py-2 sm:py-2 md:py-3 lg:py-4 xl:py-5 -top-[10%] sm:-top-[12%] md:-top-[14%] lg:-top-[16%] xl:-top-[18%] 2xl:-top-25 3xl:-top-32 4xl:-top-44">
+              <div className="text-right space-y-2 sm:space-y-2.5 md:space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-7 3xl:space-y-9 4xl:space-y-12">
+                {renderParagraphs(
+                  data.rightSection.paragraphs,
+                  "right",
+                  "text-[5px] sm:text-[6px] md:text-[7px] lg:text-[8px] xl:text-[10px] 2xl:text-sm 3xl:text-lg 4xl:text-2xl",
+                )}
               </div>
             </div>
 
             {/* Bottom Section - Signature Area */}
             <div className="text-right">
-              {/* ============================================
-                  SIGNATURE SECTION (Uncomment to enable)
-                  To use: Add signature object to data in featuresData.js
-                  ============================================ */}
+              <div className="bottom-right"></div>
               {data.rightSection.signature && (
-                <div className="mb-2 sm:mb-3 md:mb-4">
+                <div className="mb-1 sm:mb-1.5 md:mb-2 lg:mb-2.5 xl:mb-3 2xl:mb-4 3xl:mb-5 4xl:mb-6">
                   {/* Optional: Signature Image */}
                   {data.rightSection.signature.signatureImageSrc && (
-                    <img 
+                    <img
                       src={data.rightSection.signature.signatureImageSrc}
                       alt="Signature"
-                      className="h-6 sm:h-7 md:h-8 lg:h-10 xl:h-12 ml-auto mb-1 text-element"
+                      className="h-4 sm:h-4 md:h-5 lg:h-5 xl:h-5 2xl:h-6 3xl:h-8 4xl:h-12 ml-auto mb-1 text-element"
                     />
                   )}
-                  {/* Signature Name (cursive/script style) */}
-                  <p className="text-black text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-serif italic tracking-wide text-element">
-                    {data.rightSection.signature.name}
-                  </p>
-                  {/* Title */}
-                  <p className="text-black text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-xs font-futura-md uppercase tracking-wider opacity-80 mt-0.5 text-element">
-                    {data.rightSection.signature.title}
-                  </p>
-                  {/* Company */}
-                  <p className="text-black text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-xs font-futura-md uppercase tracking-wider opacity-80 text-element">
-                    {data.rightSection.signature.company}
+                  {/* Signature Name */}
+                  <p className="text-black text-[6px] sm:text-[7px] md:text-[8px] lg:text-[9px] xl:text-[10px] 2xl:text-xs 3xl:text-sm 4xl:text-lg font-futura-bk tracking-tight font-bold opacity-70 mt-0.5 sm:mt-1 whitespace-pre-line text-element">
+                    {data.rightSection.topSubtext}
                   </p>
                 </div>
               )}
 
               {/* Accent Squares with seaBox */}
-              <div className="mt-2 sm:mt-3 md:mt-4">
-                <AccentSquares 
-                  accentSquares={data.rightSection.accentSquares} 
-                  seaBoxSrc={data.rightSection.seaBoxSrc} 
-                  squaresPosition={data.rightSection.squaresPosition} 
+              <div className="mt-1 sm:mt-1.5 md:mt-2 lg:mt-2.5 xl:mt-3 2xl:mt-4 3xl:mt-5 4xl:mt-6">
+                <AccentSquares
+                  accentSquares={data.rightSection.accentSquares}
+                  seaBoxSrc={data.rightSection.seaBoxSrc}
+                  squaresPosition={data.rightSection.squaresPosition}
                 />
               </div>
             </div>
@@ -213,7 +227,7 @@ const SplitBackgroundSlide = ({ data }) => {
 
 // ============================================
 // SLIDE TYPE: threeArchitects (Slide 2)
-// Layout: Title + squares on left, 3 architect cards on right
+// IMPROVED: Increased text sizes for better readability on iPad
 // ============================================
 const ThreeArchitectsSlide = ({ data }) => {
   return (
@@ -225,55 +239,56 @@ const ThreeArchitectsSlide = ({ data }) => {
         alt=""
       />
 
-      <div className="absolute inset-0 flex">
+      <div className="absolute inset-0 flex justify-between">
         {/* Left Section - Title and Accent Squares */}
-        <div className="w-[28%] sm:w-[30%] md:w-[32%] lg:w-[33%] xl:w-[35%] px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 xl:px-14 xl:py-16 flex flex-col justify-between h-full">
+        <div className="w-[25%] sm:w-[26%] md:w-[28%] lg:w-[30%] xl:w-[32%] 2xl:w-[35%] 3xl:w-[35%] 4xl:w-[35%] px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-14 2xl:py-16 3xl:px-20 3xl:py-20 4xl:px-28 4xl:py-28 flex flex-col justify-between h-full">
           {/* Title at top */}
           <div>
-            <h2 className="text-black text-sm sm:text-base md:text-lg lg:text-2xl xl:text-3xl font-futura-md uppercase tracking-wide whitespace-pre-line leading-tight text-element">
+            <h2 className="text-black text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl font-futura-bk uppercase tracking-wide whitespace-pre-line leading-tight text-element">
               {data.title}
             </h2>
           </div>
 
           {/* Accent Squares at bottom left */}
-          <AccentSquares 
-            accentSquares={data.accentSquares} 
-            seaBoxSrc={data.seaBoxSrc} 
-            squaresPosition={data.squaresPosition} 
+          <AccentSquares
+            accentSquares={data.accentSquares}
+            seaBoxSrc={data.seaBoxSrc}
+            squaresPosition={data.squaresPosition}
           />
         </div>
 
         {/* Right Section - 3 Architect Cards */}
-        <div className="w-[72%] sm:w-[70%] md:w-[68%] lg:w-[67%] xl:w-[65%] flex items-center justify-center py-4 sm:py-6 md:py-8 lg:py-10 xl:py-12 pr-4 sm:pr-6 md:pr-8 lg:pr-10 xl:pr-14">
-          <div className="flex gap-2 sm:gap-3 md:gap-4 lg:gap-5 xl:gap-6 w-full items-start">
+        <div className="w-[75%] sm:w-[74%] md:w-[72%] lg:w-[70%] xl:w-[68%] 2xl:w-[50%] 3xl:w-[50%] 4xl:w-[50%] flex items-center justify-between py-3 sm:py-4 md:py-5 lg:py-6 xl:py-8 2xl:py-12 3xl:py-16 4xl:py-20 pr-3 sm:pr-4 md:pr-5 lg:pr-6 xl:pr-8 2xl:pr-14 3xl:pr-20 4xl:pr-28">
+          <div className="flex gap-2 sm:gap-2.5 md:gap-3 lg:gap-4 xl:gap-5 2xl:gap-6 3xl:gap-8 4xl:gap-10 w-full items-start">
             {data.architects.map((architect, index) => (
-              <div key={index} className="flex-1 flex flex-col group cursor-pointer">
-                {/* Photo - Fixed height container to ensure all photos are equal size */}
-                <div className="w-full h-36 sm:h-44 md:h-52 lg:h-64 xl:h-72 overflow-hidden relative flex-shrink-0">
+              <div
+                key={index}
+                className="flex-1 flex flex-col group cursor-pointer"
+              >
+                {/* Photo */}
+                <div className="w-full h-28 sm:h-32 md:h-40 lg:h-48 xl:h-60 2xl:h-110 3xl:h-[30rem] 4xl:h-[40rem] overflow-hidden relative flex-shrink-0">
                   <img
                     src={architect.src}
                     className="w-full h-full object-cover object-[50%_0%] text-element transition-all duration-700 ease-out group-hover:scale-105"
                     alt={architect.name}
                   />
-                  {/* Elegant overlay on hover */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500" />
-                  {/* Shine effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
                 </div>
-                
-                {/* Name */}
-                <p className="text-black text-[9px] sm:text-[10px] md:text-xs lg:text-sm xl:text-base uppercase font-futura-md tracking-wide mt-2 sm:mt-2.5 md:mt-3 lg:mt-4 text-center transition-all duration-300 group-hover:tracking-wider text-element">
+
+                {/* Name - INCREASED SIZE */}
+                <p className="text-black text-[7px] sm:text-[8px] md:text-[9px] lg:text-[11px] xl:text-sm 2xl:text-2xl 3xl:text-3xl 4xl:text-4xl uppercase font-futura-bk tracking-widest mt-1.5 sm:mt-2 md:mt-2.5 lg:mt-3 xl:mt-3.5 2xl:mt-4 3xl:mt-5 4xl:mt-6 text-center transition-all duration-300 group-hover:tracking-wider text-element">
                   {architect.name}
                 </p>
-                
-                {/* Title */}
-                <p className="text-black text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-xs uppercase font-futura-md opacity-60 mt-0.5 sm:mt-1 text-center tracking-wider text-element">
+
+                {/* Title - INCREASED SIZE */}
+                <p className="text-black text-[5px] sm:text-[5.5px] md:text-[6.5px] lg:text-[8px] xl:text-[10px] 2xl:text-xs 3xl:text-sm 4xl:text-lg uppercase font-futura-bk opacity-60 mt-0.5 text-center tracking-wider text-element">
                   {architect.title}
                 </p>
-                
-                {/* Description */}
+
+                {/* Description - INCREASED SIZE */}
                 {architect.description && (
-                  <p className="text-black text-[6px] sm:text-[7px] md:text-[8px] lg:text-[9px] xl:text-[11px] font-futura-md leading-relaxed mt-2 sm:mt-2.5 md:mt-3 lg:mt-4 text-justify text-element">
+                  <p className="text-black text-[5px] sm:text-[5.5px] md:text-[6px] lg:text-[7px] xl:text-[9px] 2xl:text-[15px] 3xl:text-[19px] 4xl:text-[26px] font-futura-bk leading-relaxed lg:leading-loose mt-1.5 sm:mt-2 md:mt-2.5 lg:mt-3 xl:mt-3.5 2xl:mt-4 3xl:mt-5 4xl:mt-6 text-justify tracking-tight text-element">
                     {architect.description}
                   </p>
                 )}
@@ -288,7 +303,7 @@ const ThreeArchitectsSlide = ({ data }) => {
 
 // ============================================
 // SLIDE TYPE: architectIndividual (Slides 3, 4, 5)
-// Layout: Image on one side, Name/Title/Paragraphs/Squares on other
+// FIXED: Accent squares now properly positioned at bottom
 // ============================================
 const ArchitectIndividualSlide = ({ data }) => {
   const isImageLeft = data.layoutDirection === "imageLeft";
@@ -306,96 +321,82 @@ const ArchitectIndividualSlide = ({ data }) => {
         {isImageLeft ? (
           <>
             {/* Left - Image */}
-            <div className="w-[45%] sm:w-[48%] md:w-[50%] lg:w-[50%] xl:w-[50%] relative h-full overflow-hidden group cursor-pointer">
+            <div className="w-[42%] sm:w-[44%] md:w-[46%] lg:w-[48%] xl:w-[50%] 2xl:w-[80%] 3xl:w-[80%] 4xl:w-[80%] relative h-full overflow-hidden group cursor-pointer">
               <img
                 src={data.imageSrc}
-                className="w-full h-full object-cover object-[50%_0%] text-element transition-all duration-700 ease-out group-hover:scale-105"
+                className="w-full h-full object-cover object-[30%_0%] text-element transition-all duration-700 ease-out group-hover:scale-105"
                 alt=""
               />
-              {/* Subtle overlay */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-500" />
-              {/* Shine effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
             </div>
             {/* Right - Text */}
-            <div className="w-[55%] sm:w-[52%] md:w-[50%] lg:w-[50%] xl:w-[50%] px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 xl:px-14 xl:py-16 flex flex-col justify-between h-full">
+            <div className="w-[58%] sm:w-[56%] md:w-[54%] lg:w-[52%] xl:w-[50%] 2xl:w-[50%] 3xl:w-[50%] 4xl:w-[50%] px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-14 2xl:py-16 3xl:px-20 3xl:py-20 4xl:px-28 4xl:py-28 h-full relative">
               {/* Top - Name and Title */}
-              <div className="text-right">
-                <h2 className="text-black text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-futura-md uppercase tracking-widest text-element">
+              <div className="text-right absolute top-[15%] sm:top-[16%] md:top-[17%] lg:top-[18%] xl:top-[20%] 2xl:top-40 3xl:top-52 4xl:top-72 right-3 sm:right-4 md:right-5 lg:right-6 xl:right-8 2xl:right-14 3xl:right-20 4xl:right-28">
+                <h2 className="text-black text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl font-futura-bk uppercase tracking-widest text-element">
                   {data.name}
                 </h2>
-                <p className="text-black text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs xl:text-sm font-futura-md uppercase tracking-wider opacity-60 mt-0.5 sm:mt-1 text-element">
+                <p className="text-black text-[5px] sm:text-[6px] md:text-[7px] lg:text-[8px] xl:text-[10px] 2xl:text-sm 3xl:text-base 4xl:text-xl font-futura-bk uppercase tracking-wider opacity-60 mt-0.5 sm:mt-1 text-element">
                   {data.title}
                 </p>
               </div>
 
-              {/* Middle - Paragraphs */}
-              <div className="flex-1 flex flex-col justify-center py-2 sm:py-3 md:py-4">
-                <div className="text-right space-y-2 sm:space-y-2.5 md:space-y-3 lg:space-y-4">
-                  {data.paragraphs?.map((paragraph, index) => (
-                    <p 
-                      key={index} 
-                      className="text-black text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-xs font-futura-md leading-relaxed text-element"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
+              {/* Middle - Paragraphs with exact line breaks */}
+              <div className="flex-1 flex flex-col justify-center py-1 sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3 absolute bottom-[12%] sm:bottom-[13%] md:bottom-[14%] lg:bottom-[15%] xl:bottom-[18%] 2xl:bottom-30 3xl:bottom-40 4xl:bottom-52 right-3 sm:right-4 md:right-5 lg:right-6 xl:right-8 2xl:right-14 3xl:right-20 4xl:right-28 left-3 sm:left-4 md:left-5 lg:left-6 xl:left-8 2xl:left-14 3xl:left-20 4xl:left-28">
+                <div className="text-right space-y-1 sm:space-y-1.5 md:space-y-2 lg:space-y-2.5 xl:space-y-3 2xl:space-y-4 3xl:space-y-5 4xl:space-y-6">
+                  {renderParagraphs(data.paragraphs, "right")}
                 </div>
               </div>
 
-              {/* Bottom - Accent Squares */}
-              <AccentSquares 
-                accentSquares={data.accentSquares} 
-                seaBoxSrc={data.seaBoxSrc} 
-                squaresPosition={data.squaresPosition} 
-              />
+              {/* Bottom - Accent Squares - FIXED: Absolutely positioned at bottom right */}
+              <div className="absolute bottom-4 sm:bottom-5 md:bottom-6 lg:bottom-8 xl:bottom-10 2xl:bottom-16 3xl:bottom-20 4xl:bottom-28 right-3 sm:right-4 md:right-5 lg:right-6 xl:right-8 2xl:right-14 3xl:right-20 4xl:right-28">
+                <AccentSquares
+                  accentSquares={data.accentSquares}
+                  seaBoxSrc={data.seaBoxSrc}
+                  squaresPosition={data.squaresPosition}
+                />
+              </div>
             </div>
           </>
         ) : (
           <>
             {/* Left - Text */}
-            <div className="w-[55%] sm:w-[52%] md:w-[50%] lg:w-[50%] xl:w-[50%] px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 xl:px-14 xl:py-16 flex flex-col justify-between h-full">
+            <div className="w-[58%] sm:w-[56%] md:w-[54%] lg:w-[52%] xl:w-[50%] 2xl:w-[50%] 3xl:w-[50%] 4xl:w-[50%] px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-14 2xl:py-16 3xl:px-20 3xl:py-20 4xl:px-28 4xl:py-28 h-full relative">
               {/* Top - Name and Title */}
-              <div className="text-left">
-                <h2 className="text-black text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-futura-md uppercase tracking-widest text-element">
+              <div className="text-left absolute top-[15%] sm:top-[16%] md:top-[17%] lg:top-[18%] xl:top-[20%] 2xl:top-40 3xl:top-52 4xl:top-72 left-3 sm:left-4 md:left-5 lg:left-6 xl:left-8 2xl:left-14 3xl:left-20 4xl:left-28">
+                <h2 className="text-black text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl font-futura-bk uppercase tracking-widest text-element">
                   {data.name}
                 </h2>
-                <p className="text-black text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs xl:text-sm font-futura-md uppercase tracking-wider opacity-60 mt-0.5 sm:mt-1 text-element">
+                <p className="text-black text-[5px] sm:text-[6px] md:text-[7px] lg:text-[8px] xl:text-[10px] 2xl:text-sm 3xl:text-base 4xl:text-xl font-futura-bk uppercase tracking-wider opacity-60 mt-0.5 sm:mt-1 text-element">
                   {data.title}
                 </p>
               </div>
 
-              {/* Middle - Paragraphs */}
-              <div className="flex-1 flex flex-col justify-center py-2 sm:py-3 md:py-4">
-                <div className="text-left space-y-2 sm:space-y-2.5 md:space-y-3 lg:space-y-4">
-                  {data.paragraphs?.map((paragraph, index) => (
-                    <p 
-                      key={index} 
-                      className="text-black text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-xs font-futura-md leading-relaxed text-element"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
+              {/* Middle - Paragraphs with exact line breaks */}
+              <div className="flex-1 flex flex-col justify-center py-1 sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3 absolute bottom-[12%] sm:bottom-[13%] md:bottom-[14%] lg:bottom-[15%] xl:bottom-[18%] 2xl:bottom-30 3xl:bottom-40 4xl:bottom-52 left-3 sm:left-4 md:left-5 lg:left-6 xl:left-8 2xl:left-14 3xl:left-20 4xl:left-28 right-3 sm:right-4 md:right-5 lg:right-6 xl:right-8 2xl:right-14 3xl:right-20 4xl:right-28">
+                <div className="text-left space-y-1 sm:space-y-1.5 md:space-y-2 lg:space-y-2.5 xl:space-y-3 2xl:space-y-4 3xl:space-y-5 4xl:space-y-6">
+                  {renderParagraphs(data.paragraphs, "left")}
                 </div>
               </div>
 
-              {/* Bottom - Accent Squares */}
-              <AccentSquares 
-                accentSquares={data.accentSquares} 
-                seaBoxSrc={data.seaBoxSrc} 
-                squaresPosition={data.squaresPosition} 
-              />
+              {/* Bottom - Accent Squares - FIXED: Absolutely positioned at bottom left */}
+              <div className="absolute bottom-4 sm:bottom-5 md:bottom-6 lg:bottom-8 xl:bottom-10 2xl:bottom-16 3xl:bottom-20 4xl:bottom-28 left-3 sm:left-4 md:left-5 lg:left-6 xl:left-8 2xl:left-14 3xl:left-20 4xl:left-28">
+                <AccentSquares
+                  accentSquares={data.accentSquares}
+                  seaBoxSrc={data.seaBoxSrc}
+                  squaresPosition={data.squaresPosition}
+                />
+              </div>
             </div>
             {/* Right - Image */}
-            <div className="w-[45%] sm:w-[48%] md:w-[50%] lg:w-[50%] xl:w-[50%] relative h-full overflow-hidden group cursor-pointer">
+            <div className="w-[42%] sm:w-[44%] md:w-[46%] lg:w-[48%] xl:w-[50%] 2xl:w-[80%] 3xl:w-[80%] 4xl:w-[80%] relative h-full overflow-hidden group cursor-pointer">
               <img
                 src={data.imageSrc}
-                className="w-full h-full object-cover object-[50%_0%] text-element transition-all duration-700 ease-out group-hover:scale-105"
+                className="w-full h-full object-cover object-[20%_0%] text-element transition-all duration-700 ease-out group-hover:scale-105"
                 alt=""
               />
-              {/* Subtle overlay */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-500" />
-              {/* Shine effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
             </div>
           </>
@@ -407,7 +408,6 @@ const ArchitectIndividualSlide = ({ data }) => {
 
 // ============================================
 // SLIDE TYPE: buildingShowcase (Slide 6)
-// Layout: Large image LEFT, Title + squares RIGHT
 // ============================================
 const BuildingShowcaseSlide = ({ data }) => {
   return (
@@ -421,21 +421,20 @@ const BuildingShowcaseSlide = ({ data }) => {
 
       <div className="absolute inset-0 flex">
         {/* Left - Building/Cityscape Image */}
-        <div className="w-[60%] sm:w-[62%] md:w-[65%] lg:w-[65%] xl:w-[65%] relative h-full overflow-hidden group cursor-pointer">
+        <div className="w-[60%] sm:w-[60%] md:w-[62%] lg:w-[63%] xl:w-[64%] 2xl:w-[65%] 3xl:w-[65%] 4xl:w-[65%] relative h-full overflow-hidden group cursor-pointer">
           <img
             src={data.buildingImageSrc}
             className="w-full h-full object-cover object-[80%_50%] text-element transition-all duration-700 ease-out group-hover:scale-105"
             alt=""
           />
-          {/* Subtle overlay */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-500" />
         </div>
 
         {/* Right - Title and Squares */}
-        <div className="w-[40%] sm:w-[38%] md:w-[35%] lg:w-[35%] xl:w-[35%] px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 xl:px-14 xl:py-16 flex flex-col justify-between h-full">
+        <div className="w-[40%] sm:w-[40%] md:w-[38%] lg:w-[37%] xl:w-[36%] 2xl:w-[35%] 3xl:w-[35%] 4xl:w-[35%] px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-14 2xl:py-16 3xl:px-20 3xl:py-20 4xl:px-28 4xl:py-28 flex flex-col justify-between h-full">
           {/* Title at top */}
           <div className="text-right">
-            <h2 className="text-black text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-futura-md uppercase tracking-wide whitespace-pre-line leading-tight text-element">
+            <h2 className="text-black text-[9px] sm:text-[10px] md:text-xs lg:text-sm xl:text-lg 2xl:text-2xl 3xl:text-3xl 4xl:text-4xl font-futura-bk uppercase tracking-widest whitespace-pre-line leading-tight text-element">
               {data.title}
             </h2>
           </div>
@@ -444,10 +443,10 @@ const BuildingShowcaseSlide = ({ data }) => {
           <div className="flex-1"></div>
 
           {/* Accent Squares at bottom right */}
-          <AccentSquares 
-            accentSquares={data.accentSquares} 
-            seaBoxSrc={data.seaBoxSrc} 
-            squaresPosition={data.squaresPosition} 
+          <AccentSquares
+            accentSquares={data.accentSquares}
+            seaBoxSrc={data.seaBoxSrc}
+            squaresPosition={data.squaresPosition}
           />
         </div>
       </div>
@@ -457,7 +456,6 @@ const BuildingShowcaseSlide = ({ data }) => {
 
 // ============================================
 // SLIDE TYPE: buildingElements (Slide 7)
-// Layout: Elements LEFT, Main building CENTER, Title+Description+Squares RIGHT
 // ============================================
 const BuildingElementsSlide = ({ data }) => {
   return (
@@ -468,20 +466,27 @@ const BuildingElementsSlide = ({ data }) => {
         className="object-cover w-full h-full absolute inset-0"
         alt=""
       />
+      {data.backgroundTree && (
+        <img
+          src={data.backgroundTree}
+          className="object-cover w-[50%] h-auto absolute bottom-[50px] sm:bottom-[60px] md:bottom-[70px] lg:bottom-[80px] xl:bottom-[90px] 2xl:bottom-[110px] 3xl:bottom-[140px] 4xl:bottom-[180px] left-0"
+          alt=""
+        />
+      )}
 
       <div className="absolute inset-0 flex">
         {/* Left Section - Element thumbnails with text */}
-        <div className="w-[18%] sm:w-[18%] md:w-[18%] lg:w-[18%] xl:w-[18%] px-2 py-4 sm:px-3 sm:py-6 md:px-4 md:py-8 lg:px-5 lg:py-10 xl:px-6 xl:py-12 flex flex-col justify-center gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-8 h-full">
+        <div className="w-[18%] sm:w-[18%] md:w-[18%] lg:w-[17%] xl:w-[16%] 2xl:w-[15%] 3xl:w-[15%] 4xl:w-[15%] px-1.5 py-3 sm:px-2 sm:py-4 md:px-2.5 md:py-5 lg:px-3 lg:py-6 xl:px-4 xl:py-8 2xl:px-6 2xl:py-12 3xl:px-8 3xl:py-16 4xl:px-12 4xl:py-20 flex flex-col justify-center gap-2 sm:gap-2.5 md:gap-3 lg:gap-4 xl:gap-5 2xl:gap-8 3xl:gap-10 4xl:gap-14 h-full">
           {data.elements.map((element, index) => (
-            <div key={index} className="flex flex-col group cursor-pointer">
-              <div className="overflow-hidden relative flex-shrink-0 w-14 h-12 sm:w-16 sm:h-14 md:w-20 md:h-16 lg:w-24 lg:h-20 xl:w-28 xl:h-24">
+            <div key={index} className="flex flex-col group cursor-pointer items-end">
+              <div className="overflow-hidden relative flex-shrink-0 w-9 h-7 sm:w-10 sm:h-8 md:w-12 md:h-10 lg:w-16 lg:h-12 xl:w-20 xl:h-16 2xl:w-28 2xl:h-24 3xl:w-36 3xl:h-28 4xl:w-48 4xl:h-40">
                 <img
                   src={element.src}
                   className="w-full h-full object-cover text-element transition-all duration-500 ease-out group-hover:scale-110 group-hover:brightness-110"
                   alt=""
                 />
               </div>
-              <p className="text-black text-[5px] sm:text-[6px] md:text-[7px] lg:text-[8px] xl:text-[9px] font-futura-md leading-snug mt-1 sm:mt-1.5 md:mt-2 uppercase tracking-wide text-element">
+              <p className="text-black text-[3.5px] sm:text-[4px] md:text-[4.5px] lg:text-[5px] xl:text-[6px] 2xl:text-[9px] 3xl:text-[11px] 4xl:text-[15px] font-futura-bk leading-snug mt-0.5 sm:mt-0.5 md:mt-1 lg:mt-1 xl:mt-1.5 2xl:mt-2 3xl:mt-2.5 4xl:mt-3 uppercase tracking-wide text-element text-right">
                 {element.text}
               </p>
             </div>
@@ -489,19 +494,19 @@ const BuildingElementsSlide = ({ data }) => {
         </div>
 
         {/* Center Section - Main Building Image */}
-        <div className="w-[47%] sm:w-[47%] md:w-[47%] lg:w-[47%] xl:w-[47%] h-full flex items-center justify-center p-2 sm:p-3 md:p-4 lg:p-6 xl:p-8 overflow-hidden group cursor-pointer">
+        <div className="w-[47%] sm:w-[47%] md:w-[47%] lg:w-[48%] xl:w-[49%] 2xl:w-[47%] 3xl:w-[47%] 4xl:w-[47%] h-full flex items-center justify-center p-1 sm:p-1.5 md:p-2 lg:p-3 xl:p-5 2xl:p-8 3xl:p-10 4xl:p-14 overflow-hidden group cursor-pointer relative">
           <img
             src={data.mainImageSrc}
-            className="h-full object-contain text-element transition-all duration-700 ease-out group-hover:scale-105"
+            className="h-[88%] sm:h-[89%] md:h-[89%] lg:h-[90%] xl:h-[90%] 2xl:h-[90%] object-contain text-element transition-all duration-700 ease-out group-hover:scale-105 absolute left-[12%] sm:left-[14%] md:left-[16%] lg:left-[18%] xl:left-[20%] 2xl:left-30 3xl:left-40 4xl:left-52 -bottom-3 sm:-bottom-4 md:-bottom-5 lg:-bottom-5 xl:-bottom-6 2xl:-bottom-7 3xl:-bottom-9 4xl:-bottom-12"
             alt=""
           />
         </div>
 
         {/* Right Section - Title, Description, Squares */}
-        <div className="w-[35%] sm:w-[35%] md:w-[35%] lg:w-[35%] xl:w-[35%] px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 xl:px-14 xl:py-16 flex flex-col justify-between h-full">
+        <div className="w-[35%] sm:w-[35%] md:w-[35%] lg:w-[35%] xl:w-[35%] 2xl:w-[35%] 3xl:w-[35%] 4xl:w-[35%] px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-14 2xl:py-16 3xl:px-20 3xl:py-20 4xl:px-28 4xl:py-28 flex flex-col justify-between h-full">
           {/* Title at top */}
           <div className="text-right">
-            <h2 className="text-black text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-futura-md uppercase tracking-wide text-element">
+            <h2 className="text-black text-[9px] sm:text-[10px] md:text-xs lg:text-sm xl:text-lg 2xl:text-2xl 3xl:text-3xl 4xl:text-4xl font-futura-bk uppercase tracking-wide text-element">
               {data.title}
             </h2>
           </div>
@@ -512,16 +517,16 @@ const BuildingElementsSlide = ({ data }) => {
           {/* Description and Squares at bottom */}
           <div className="text-right">
             {data.description && (
-              <p className="text-black text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] xl:text-xs font-futura-md leading-relaxed mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-element">
+              <p className="text-black text-[4.5px] sm:text-[5px] md:text-[5.5px] lg:text-[6px] xl:text-[8px] 2xl:text-xs 3xl:text-sm 4xl:text-lg font-futura-bk leading-relaxed mb-1.5 sm:mb-2 md:mb-2.5 lg:mb-3 xl:mb-4 2xl:mb-6 3xl:mb-8 4xl:mb-10 text-element">
                 {data.description}
               </p>
             )}
-            
+
             {/* Accent Squares */}
-            <AccentSquares 
-              accentSquares={data.accentSquares} 
-              seaBoxSrc={data.seaBoxSrc} 
-              squaresPosition={data.squaresPosition} 
+            <AccentSquares
+              accentSquares={data.accentSquares}
+              seaBoxSrc={data.seaBoxSrc}
+              squaresPosition={data.squaresPosition}
             />
           </div>
         </div>
@@ -547,7 +552,6 @@ const FullImageSlide = ({ data }) => {
 
 // ============================================
 // SLIDE TYPE: mapSlide (Slide 9)
-// Layout: Title + Distances + Squares LEFT, Map RIGHT
 // ============================================
 const MapSlide = ({ data }) => {
   return (
@@ -561,21 +565,21 @@ const MapSlide = ({ data }) => {
 
       <div className="absolute inset-0 flex">
         {/* Left Section - Title, Distances, Squares */}
-        <div className="w-[35%] sm:w-[35%] md:w-[35%] lg:w-[35%] xl:w-[35%] px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 xl:px-14 xl:py-16 flex flex-col justify-between h-full">
+        <div className="w-[35%] sm:w-[35%] md:w-[35%] lg:w-[35%] xl:w-[35%] 2xl:w-[35%] 3xl:w-[35%] 4xl:w-[35%] px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-14 2xl:py-16 3xl:px-20 3xl:py-20 4xl:px-28 4xl:py-28 flex flex-col justify-between h-full relative">
           {/* Title at top */}
           <div>
-            <h2 className="text-black text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-futura-md uppercase tracking-wide whitespace-pre-line leading-tight text-element">
+            <h2 className="text-black text-[9px] sm:text-[10px] md:text-xs lg:text-sm xl:text-lg 2xl:text-2xl 3xl:text-3xl 4xl:text-4xl font-futura-bk uppercase tracking-widest whitespace-pre-line leading-tight text-element absolute top-[15%] sm:top-[16%] md:top-[17%] lg:top-[18%] xl:top-[20%] 2xl:top-40 3xl:top-52 4xl:top-72">
               {data.title}
             </h2>
           </div>
 
           {/* Distances list */}
           {data.distances && (
-            <div className="space-y-1 sm:space-y-1.5 md:space-y-2 lg:space-y-2.5">
+            <div className="space-y-0.5 sm:space-y-0.5 md:space-y-1 lg:space-y-1.5 xl:space-y-2 2xl:space-y-2.5 3xl:space-y-3 4xl:space-y-4 absolute bottom-[12%] sm:bottom-[13%] md:bottom-[14%] lg:bottom-[15%] xl:bottom-[18%] 2xl:bottom-30 3xl:bottom-40 4xl:bottom-52">
               {data.distances.map((item, index) => (
-                <p 
-                  key={index} 
-                  className="text-black text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs xl:text-sm font-futura-md text-element"
+                <p
+                  key={index}
+                  className="text-black text-[5px] sm:text-[6px] md:text-[7px] lg:text-[8px] xl:text-[10px] 2xl:text-sm 3xl:text-base 4xl:text-xl font-futura-bk text-element"
                 >
                   {item.place}: {item.distance}
                 </p>
@@ -584,18 +588,18 @@ const MapSlide = ({ data }) => {
           )}
 
           {/* Accent Squares at bottom left */}
-          <AccentSquares 
-            accentSquares={data.accentSquares} 
-            seaBoxSrc={data.seaBoxSrc} 
-            squaresPosition={data.squaresPosition} 
+          <AccentSquares
+            accentSquares={data.accentSquares}
+            seaBoxSrc={data.seaBoxSrc}
+            squaresPosition={data.squaresPosition}
           />
         </div>
 
         {/* Right Section - Map Image */}
-        <div className="w-[65%] sm:w-[65%] md:w-[65%] lg:w-[65%] xl:w-[65%] relative h-full overflow-hidden group cursor-pointer">
+        <div className="w-[65%] sm:w-[65%] md:w-[65%] lg:w-[65%] xl:w-[65%] 2xl:w-[65%] 3xl:w-[65%] 4xl:w-[65%] relative h-full overflow-hidden group cursor-pointer">
           <img
             src={data.mapImageSrc}
-            className="w-full h-full object-cover text-element transition-all duration-700 ease-out group-hover:scale-105"
+            className="w-full h-full object-[100%_50%] object-cover text-element transition-all duration-700 ease-out group-hover:scale-105 absolute right-0"
             alt=""
           />
         </div>
@@ -606,7 +610,6 @@ const MapSlide = ({ data }) => {
 
 // ============================================
 // SLIDE TYPE: portfolioSlide (Slide 10)
-// Layout: 3 building images LEFT, Text + Squares RIGHT
 // ============================================
 const PortfolioSlide = ({ data }) => {
   return (
@@ -620,30 +623,31 @@ const PortfolioSlide = ({ data }) => {
 
       <div className="absolute inset-0 flex">
         {/* Left Section - 3 Building Images */}
-        <div className="w-[65%] sm:w-[65%] md:w-[65%] lg:w-[65%] xl:w-[65%] relative h-full">
-          <div className="flex gap-0 h-full">
+        <div className="w-[65%] sm:w-[65%] md:w-[65%] lg:w-[65%] xl:w-[68%] 2xl:w-[70%] 3xl:w-[70%] 4xl:w-[70%] relative h-full">
+          <div className="flex gap-1.5 sm:gap-2 md:gap-2.5 lg:gap-2.5 xl:gap-3 2xl:gap-3 3xl:gap-4 4xl:gap-5 h-full">
             {data.buildings.map((building, index) => (
-              <div key={index} className="flex-1 flex flex-col group cursor-pointer relative h-full overflow-hidden">
-                {/* Full height image - using object-contain to show full building */}
+              <div
+                key={index}
+                className="flex-1 flex flex-col group cursor-pointer relative h-full overflow-hidden"
+              >
+                {/* Full height image */}
                 <img
                   src={building.src}
                   className="w-full h-full object-cover text-element transition-all duration-700 ease-out group-hover:scale-105"
-                  style={{ 
-                    objectPosition: building.objectPosition || '50% 50%' 
+                  style={{
+                    objectPosition: building.objectPosition || "50% 50%",
                   }}
                   alt={building.name}
                 />
-                {/* Elegant dark overlay on hover */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500" />
-                {/* Shine effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
-                
+
                 {/* Label at TOP of image */}
-                <div className="absolute top-3 sm:top-4 md:top-5 lg:top-6 xl:top-8 left-0 right-0 text-center">
-                  <p className="text-white text-[7px] sm:text-[8px] md:text-[9px] lg:text-xs xl:text-sm uppercase font-futura-md tracking-wider text-element drop-shadow-lg">
+                <div className="absolute top-2 sm:top-2.5 md:top-3 lg:top-4 xl:top-5 2xl:top-8 3xl:top-10 4xl:top-14 left-0 right-0 text-center">
+                  <p className="text-white text-[5px] sm:text-[5.5px] md:text-[6px] lg:text-[7px] xl:text-[9px] 2xl:text-sm 3xl:text-base 4xl:text-xl uppercase font-futura-bk tracking-wider text-element drop-shadow-lg">
                     {building.name}
                   </p>
-                  <p className="text-white text-[6px] sm:text-[7px] md:text-[8px] lg:text-[10px] xl:text-xs uppercase font-futura-md opacity-80 tracking-wider text-element drop-shadow-lg">
+                  <p className="text-white text-[4px] sm:text-[4.5px] md:text-[5px] lg:text-[6px] xl:text-[8px] 2xl:text-xs 3xl:text-sm 4xl:text-lg uppercase font-futura-bk opacity-80 tracking-wider text-element drop-shadow-lg">
                     {building.location}
                   </p>
                 </div>
@@ -653,24 +657,27 @@ const PortfolioSlide = ({ data }) => {
         </div>
 
         {/* Right Section - Text and Squares */}
-        <div className="w-[35%] sm:w-[35%] md:w-[35%] lg:w-[35%] xl:w-[35%] px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 xl:px-14 xl:py-16 flex flex-col justify-between h-full">
+        <div className="w-[35%] sm:w-[35%] md:w-[35%] lg:w-[35%] xl:w-[32%] 2xl:w-[35%] 3xl:w-[35%] 4xl:w-[35%] px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-14 2xl:py-16 3xl:px-20 3xl:py-20 4xl:px-28 4xl:py-28 flex flex-col justify-between h-full relative">
           {/* Spacer */}
           <div></div>
 
-          {/* Text lines - centered vertically */}
-          <div className="text-right">
+          {/* Text lines */}
+          <div className="text-right absolute right-3 sm:right-4 md:right-5 lg:right-6 xl:right-8 2xl:right-14 3xl:right-20 4xl:right-28 top-[15%] sm:top-[16%] md:top-[17%] lg:top-[18%] xl:top-[20%] 2xl:top-40 3xl:top-52 4xl:top-72">
             {data.textLines.map((line, index) => (
-              <p key={index} className="text-black text-[9px] sm:text-[10px] md:text-xs lg:text-sm xl:text-lg font-futura-md tracking-wider uppercase text-element leading-relaxed">
+              <p
+                key={index}
+                className="text-black text-[6px] sm:text-[7px] md:text-[8px] lg:text-[9px] xl:text-xs 2xl:text-2xl 3xl:text-3xl 4xl:text-4xl font-futura-bk tracking-widest uppercase text-element leading-relaxed"
+              >
                 {line}
               </p>
             ))}
           </div>
 
           {/* Accent Squares at bottom right */}
-          <AccentSquares 
-            accentSquares={data.accentSquares} 
-            seaBoxSrc={data.seaBoxSrc} 
-            squaresPosition={data.squaresPosition} 
+          <AccentSquares
+            accentSquares={data.accentSquares}
+            seaBoxSrc={data.seaBoxSrc}
+            squaresPosition={data.squaresPosition}
           />
         </div>
       </div>
@@ -679,7 +686,7 @@ const PortfolioSlide = ({ data }) => {
 };
 
 // ============================================
-// SLIDE ROUTER - Renders correct component based on slideType
+// SLIDE ROUTER
 // ============================================
 const Slide = ({ data }) => {
   switch (data.slideType) {
@@ -700,7 +707,11 @@ const Slide = ({ data }) => {
     case "portfolioSlide":
       return <PortfolioSlide data={data} />;
     default:
-      return <div className="w-full h-full bg-gray-200 flex items-center justify-center">Unknown slide type</div>;
+      return (
+        <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+          Unknown slide type
+        </div>
+      );
   }
 };
 
@@ -713,9 +724,7 @@ const Features = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const totalSlides = type1SlidesData.length;
 
-  // Direction patterns for animations
   const getDirection = (index) => {
-    // Alternating pattern: even from top, odd from bottom
     return index % 2 === 0 ? "fromTop" : "fromBottom";
   };
 
@@ -732,25 +741,23 @@ const Features = () => {
     },
   };
 
-  // Navigate to specific slide (with looping)
   const goToSlide = (index) => {
     if (isAnimating || index === currentSlide) return;
 
-    // Enable looping: if index goes below 0, loop to last slide; if above last, loop to first
     let targetIndex = index;
     if (index < 0) {
-      targetIndex = totalSlides - 1; // Loop to last slide
+      targetIndex = totalSlides - 1;
     } else if (index >= totalSlides) {
-      targetIndex = 0; // Loop to first slide
+      targetIndex = 0;
     }
 
     setIsAnimating(true);
 
     const currentSlideEl = containerRef.current?.querySelector(
-      `[data-slide-index="${currentSlide}"]`
+      `[data-slide-index="${currentSlide}"]`,
     );
     const nextSlideEl = containerRef.current?.querySelector(
-      `[data-slide-index="${targetIndex}"]`
+      `[data-slide-index="${targetIndex}"]`,
     );
 
     if (!currentSlideEl || !nextSlideEl) {
@@ -760,36 +767,30 @@ const Features = () => {
 
     const direction = directions[getDirection(targetIndex)];
 
-    // Get text elements from both slides
-    const currentTextElements = currentSlideEl.querySelectorAll(".text-element");
+    const currentTextElements =
+      currentSlideEl.querySelectorAll(".text-element");
     const nextTextElements = nextSlideEl.querySelectorAll(".text-element");
 
-    // Immediately hide next slide's elements before it becomes visible
     gsap.set(nextTextElements, { opacity: 0 });
 
-    // Set next slide to initial state and make visible
     gsap.set(nextSlideEl, {
       clipPath: direction.initial.clipPath,
       zIndex: 2,
     });
 
-    // Animate next slide in
     gsap.to(nextSlideEl, {
       clipPath: direction.animate.clipPath,
       duration: 1.2,
       ease: "hop",
       onComplete: () => {
-        // Reset z-indices
         gsap.set(currentSlideEl, { zIndex: 0 });
         gsap.set(nextSlideEl, { zIndex: 1 });
-        // Reset current slide elements to hidden for when we return
         gsap.set(currentTextElements, { opacity: 0 });
         setCurrentSlide(targetIndex);
         setIsAnimating(false);
       },
     });
 
-    // Fade in next slide's elements with stagger
     gsap.to(nextTextElements, {
       opacity: 1,
       duration: 0.8,
@@ -799,7 +800,6 @@ const Features = () => {
     });
   };
 
-  // Navigation handlers
   const nextSlide = () => goToSlide(currentSlide + 1);
   const prevSlide = () => goToSlide(currentSlide - 1);
 
@@ -872,19 +872,17 @@ const Features = () => {
   useGSAP(
     () => {
       const slides = containerRef.current?.querySelectorAll(".slide");
-      
-      // First, hide ALL text elements across all slides
-      const allTextElements = containerRef.current?.querySelectorAll(".text-element");
+
+      const allTextElements =
+        containerRef.current?.querySelectorAll(".text-element");
       gsap.set(allTextElements, { opacity: 0 });
-      
+
       slides?.forEach((slide, index) => {
         if (index === 0) {
-          // First slide visible
           gsap.set(slide, {
             clipPath: "inset(0 0 0 0)",
             zIndex: 1,
           });
-          // Fade in first slide's elements
           const textElements = slide.querySelectorAll(".text-element");
           gsap.to(textElements, {
             opacity: 1,
@@ -894,7 +892,6 @@ const Features = () => {
             ease: "power1.out",
           });
         } else {
-          // Other slides hidden
           const direction = directions[getDirection(index)];
           gsap.set(slide, {
             clipPath: direction.initial.clipPath,
@@ -903,7 +900,7 @@ const Features = () => {
         }
       });
     },
-    { scope: containerRef }
+    { scope: containerRef },
   );
 
   // ============================================
@@ -913,7 +910,10 @@ const Features = () => {
     <Loader>
       <CloseButton />
 
-      <div ref={containerRef} className="h-screen overflow-hidden relative font-futura-md">
+      <div
+        ref={containerRef}
+        className="h-screen overflow-hidden relative font-futura-bk"
+      >
         <div className="relative w-full h-full">
           {/* Render all slides */}
           {type1SlidesData.map((slideData, index) => (
@@ -929,8 +929,8 @@ const Features = () => {
           ))}
 
           {/* Progress Indicator */}
-          <div className="bottom-3 sm:bottom-4 md:bottom-5 lg:bottom-6 w-[85%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[50%] px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12 absolute left-1/2 -translate-x-1/2 z-50">
-            <div className="relative w-full h-0.5 sm:h-[3px] md:h-1 bg-gray-300 rounded-none overflow-hidden opacity-70">
+          <div className="bottom-2 sm:bottom-2.5 md:bottom-3 lg:bottom-4 xl:bottom-5 2xl:bottom-6 3xl:bottom-8 4xl:bottom-10 w-[88%] sm:w-[85%] md:w-[80%] lg:w-[70%] xl:w-[60%] 2xl:w-[50%] 3xl:w-[50%] 4xl:w-[50%] px-2 sm:px-3 md:px-4 lg:px-6 xl:px-8 2xl:px-12 3xl:px-16 4xl:px-20 absolute left-1/2 -translate-x-1/2 z-50">
+            <div className="relative w-full h-[2px] sm:h-[2px] md:h-[3px] lg:h-[3px] xl:h-[3px] 2xl:h-1 3xl:h-1.5 4xl:h-2 bg-gray-300 rounded-none overflow-hidden opacity-70">
               <div
                 className="h-full bg-gray-500 transition-all duration-300 ease-out rounded-none"
                 style={{
@@ -939,16 +939,6 @@ const Features = () => {
               />
             </div>
           </div>
-
-          {/* 
-            === OPTIONAL: SLIDE COUNTER ===
-            Uncomment to show current slide number
-          */}
-          {/*
-          <div className="absolute bottom-3 sm:bottom-4 md:bottom-5 lg:bottom-6 right-3 sm:right-4 md:right-5 lg:right-6 z-50 text-gray-500 text-[10px] sm:text-xs md:text-sm font-light">
-            {currentSlide + 1} / {totalSlides}
-          </div>
-          */}
         </div>
       </div>
     </Loader>
