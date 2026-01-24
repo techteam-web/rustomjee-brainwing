@@ -169,6 +169,12 @@ export const slidesData = [
     title: "Quiet Approach",
   },
   {
+    id: 22,
+    src: "/video/2.mp4",
+    category: "exterior",
+    title: "Marquee Entry",
+  },
+  {
     id: 18,
     src: "/images/3.2.1.jpg",
     category: "exterior",
@@ -285,12 +291,31 @@ export const slidesData = [
     title: "Edge Perspective",
   },
   {
-    id: 19,
-    revealImage: "/images/3.3.1.jpg",
-    src: "/images/3.4.1.jpg",
+    id: 23,
+    src: "/video/5.mp4",
     category: "exterior",
     title: "The Tower",
   },
+  {
+    id: 24,
+    src: "/video/6.mp4",
+    category: "exterior",
+    title: "The Tower",
+  },
+  // {
+  //   id: 23,
+  //   revealImage: "/images/3.3.1.jpg",
+  //   src: "/images/3.4.1.jpg",
+  //   category: "exterior",
+  //   title: "The Tower",
+  // },
+  // {
+  //   id: 24,
+  //   revealImage: "/images/3.3.1.jpg",
+  //   src: "/images/3.4.1.jpg",
+  //   category: "exterior",
+  //   title: "The Tower",
+  // },
 ];
 export const type1SlidesData = [
   {
