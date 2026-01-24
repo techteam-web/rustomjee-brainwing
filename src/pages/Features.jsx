@@ -179,7 +179,7 @@ const SplitBackgroundSlide = ({ data }) => {
           {/* Content Container - Right aligned text */}
           <div className="h-full px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-14 2xl:py-16 3xl:px-20 3xl:py-20 4xl:px-28 4xl:py-28 flex flex-col justify-between">
             {/* Middle Section - Paragraphs with exact line breaks */}
-            <div className="relative flex-1 flex flex-col justify-center py-2 sm:py-2 md:py-3 lg:py-4 xl:py-5 -top-[10%] sm:-top-[12%] md:-top-[14%] lg:-top-[16%] xl:-top-[18%] 2xl:-top-25 3xl:-top-32 4xl:-top-44">
+            <div className="relative flex-1 flex flex-col justify-center py-2 sm:py-2 md:py-3 lg:py-4 xl:py-5 -top-[10%] sm:-top-[12%] md:-top-[14%] lg:-top-[16%] xl:-top-[15%] 2xl:-top-25 3xl:-top-32 4xl:-top-44">
               <div className="text-right space-y-2 sm:space-y-2.5 md:space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-7 3xl:space-y-9 4xl:space-y-12">
                 {renderParagraphs(
                   data.rightSection.paragraphs,
@@ -193,7 +193,7 @@ const SplitBackgroundSlide = ({ data }) => {
             <div className="text-right">
               <div className="bottom-right"></div>
               {data.rightSection.signature && (
-                <div className="mb-1 sm:mb-1.5 md:mb-2 lg:mb-2.5 xl:mb-3 2xl:mb-4 3xl:mb-5 4xl:mb-6">
+                <div className="mb-1 sm:mb-1.5 md:mb-2 lg:mb-2.5 xl:mb-3 2xl:mb-4 3xl:mb-5 4xl:mb-6 ">
                   {/* Optional: Signature Image */}
                   {data.rightSection.signature.signatureImageSrc && (
                     <img
@@ -239,9 +239,9 @@ const ThreeArchitectsSlide = ({ data }) => {
         alt=""
       />
 
-      <div className="absolute inset-0 flex justify-between">
+      <div className="absolute inset-0 flex justify-between ">
         {/* Left Section - Title and Accent Squares */}
-        <div className="w-[25%] sm:w-[26%] md:w-[28%] lg:w-[30%] xl:w-[32%] 2xl:w-[35%] 3xl:w-[35%] 4xl:w-[35%] px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-14 2xl:py-16 3xl:px-20 3xl:py-20 4xl:px-28 4xl:py-28 flex flex-col justify-between h-full">
+        <div className="w-[25%] sm:w-[26%] md:w-[28%] lg:w-[30%] xl:w-[32%] 2xl:w-[35%] 3xl:w-[35%] 4xl:w-[35%] px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-14 2xl:py-16 3xl:px-20 3xl:py-20 4xl:px-28 4xl:py-28 flex flex-col justify-between h-full ">
           {/* Title at top */}
           <div>
             <h2 className="text-black text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl font-futura-bk uppercase tracking-wide whitespace-pre-line leading-tight text-element">
@@ -303,10 +303,35 @@ const ThreeArchitectsSlide = ({ data }) => {
 
 // ============================================
 // SLIDE TYPE: architectIndividual (Slides 3, 4, 5)
-// FIXED: Accent squares now properly positioned at bottom
+// UPDATED: Text layout matching exact images
 // ============================================
 const ArchitectIndividualSlide = ({ data }) => {
   const isImageLeft = data.layoutDirection === "imageLeft";
+
+  // Render paragraphs as continuous text block with line breaks
+  const renderArchitectParagraphs = (paragraphs, alignment) => {
+    if (!paragraphs) return null;
+
+    const textAlignClass = alignment === "left" ? "text-left" : "text-right";
+
+    return (
+      <div className={`${textAlignClass}`}>
+        {paragraphs.map((paragraph, pIndex) => (
+          <div key={pIndex} className="text-element">
+            {paragraph.lines &&
+              paragraph.lines.map((line, lIndex) => (
+                <p
+                  key={lIndex}
+                  className={`text-black text-[5px] sm:text-[6px] md:text-[7px] lg:text-[8px] xl:text-[11px] 2xl:text-[15px] 3xl:text-[17px] 4xl:text-[23px] font-futura-bk leading-[1.6] sm:leading-[1.6] md:leading-[1.65] lg:leading-[1.7] xl:leading-[1.75] 2xl:leading-[1.8] ${textAlignClass}`}
+                >
+                  {line}
+                </p>
+              ))}
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   return (
     <div className="relative w-full h-full">
@@ -321,36 +346,37 @@ const ArchitectIndividualSlide = ({ data }) => {
         {isImageLeft ? (
           <>
             {/* Left - Image */}
-            <div className="w-[42%] sm:w-[44%] md:w-[46%] lg:w-[48%] xl:w-[50%] 2xl:w-[80%] 3xl:w-[80%] 4xl:w-[80%] relative h-full overflow-hidden group cursor-pointer">
+            <div className="w-[42%] sm:w-[44%] md:w-[46%] lg:w-[48%] xl:w-[50%] 2xl:w-[55%] 3xl:w-[55%] 4xl:w-[55%] relative h-full overflow-hidden group cursor-pointer flex items-center">
               <img
                 src={data.imageSrc}
-                className="w-full h-full object-cover object-[30%_0%] text-element transition-all duration-700 ease-out group-hover:scale-105"
+                className="w-full h-auto object-cover text-element transition-all duration-700 ease-out group-hover:scale-105"
                 alt=""
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-500" />
+              <div className="absolute inset-0 bg-black/0 transition-all duration-500" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
             </div>
             {/* Right - Text */}
-            <div className="w-[58%] sm:w-[56%] md:w-[54%] lg:w-[52%] xl:w-[50%] 2xl:w-[50%] 3xl:w-[50%] 4xl:w-[50%] px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-14 2xl:py-16 3xl:px-20 3xl:py-20 4xl:px-28 4xl:py-28 h-full relative">
+            <div className="w-[58%] sm:w-[56%] md:w-[54%] lg:w-[52%] xl:w-[50%] 2xl:w-[45%] 3xl:w-[45%] 4xl:w-[45%] px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-10 2xl:py-16 3xl:px-14 3xl:py-20 4xl:px-20 4xl:py-28 h-full relative flex flex-col">
               {/* Top - Name and Title */}
-              <div className="text-right absolute top-[15%] sm:top-[16%] md:top-[17%] lg:top-[18%] xl:top-[20%] 2xl:top-40 3xl:top-52 4xl:top-72 right-3 sm:right-4 md:right-5 lg:right-6 xl:right-8 2xl:right-14 3xl:right-20 4xl:right-28">
-                <h2 className="text-black text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl font-futura-bk uppercase tracking-widest text-element">
+              <div className="text-right pt-[8%] sm:pt-[10%] md:pt-[12%] lg:pt-[14%] xl:pt-[16%] 2xl:pt-[18%] 3xl:pt-[18%] 4xl:pt-[18%]">
+                <h2 className="text-black text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-3xl 3xl:text-3xl 4xl:text-4xl font-futura-bk uppercase tracking-[0.2em] sm:tracking-[0.25em] md:tracking-widest text-element">
                   {data.name}
                 </h2>
-                <p className="text-black text-[5px] sm:text-[6px] md:text-[7px] lg:text-[8px] xl:text-[10px] 2xl:text-sm 3xl:text-base 4xl:text-xl font-futura-bk uppercase tracking-wider opacity-60 mt-0.5 sm:mt-1 text-element">
+                <p className="text-black text-[5px] sm:text-[6px] md:text-[7px] lg:text-[8px] xl:text-[9px] 2xl:text-[14px] 3xl:text-sm 4xl:text-lg 2xl:pr-0.5 font-futura-bk uppercase tracking-[0.15em] sm:tracking-[0.2em] opacity-60 mt-0.5 sm:mt-1 text-element">
                   {data.title}
                 </p>
               </div>
 
-              {/* Middle - Paragraphs with exact line breaks */}
-              <div className="flex-1 flex flex-col justify-center py-1 sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3 absolute bottom-[12%] sm:bottom-[13%] md:bottom-[14%] lg:bottom-[15%] xl:bottom-[18%] 2xl:bottom-30 3xl:bottom-40 4xl:bottom-52 right-3 sm:right-4 md:right-5 lg:right-6 xl:right-8 2xl:right-14 3xl:right-20 4xl:right-28 left-3 sm:left-4 md:left-5 lg:left-6 xl:left-8 2xl:left-14 3xl:left-20 4xl:left-28">
-                <div className="text-right space-y-1 sm:space-y-1.5 md:space-y-2 lg:space-y-2.5 xl:space-y-3 2xl:space-y-4 3xl:space-y-5 4xl:space-y-6">
-                  {renderParagraphs(data.paragraphs, "right")}
-                </div>
+              {/* Spacer to push content down */}
+              <div className="flex-1"></div>
+
+              {/* Bottom - Paragraphs */}
+              <div className="pb-[12%] sm:pb-[14%] md:pb-[16%] lg:pb-[18%] xl:pb-[20%] 2xl:pb-[22%] 3xl:pb-[22%] 4xl:pb-[22%] xl:h-full 2xl:h-auto xl:flex xl:items-center xl:justify-end">
+                {renderArchitectParagraphs(data.paragraphs, "right")}
               </div>
 
-              {/* Bottom - Accent Squares - FIXED: Absolutely positioned at bottom right */}
-              <div className="absolute bottom-4 sm:bottom-5 md:bottom-6 lg:bottom-8 xl:bottom-10 2xl:bottom-16 3xl:bottom-20 4xl:bottom-28 right-3 sm:right-4 md:right-5 lg:right-6 xl:right-8 2xl:right-14 3xl:right-20 4xl:right-28">
+              {/* Bottom - Accent Squares */}
+              <div className="absolute bottom-4 sm:bottom-5 md:bottom-6 lg:bottom-8 xl:bottom-10 2xl:bottom-16 3xl:bottom-20 4xl:bottom-28 right-3 sm:right-4 md:right-5 lg:right-6 xl:right-8 2xl:right-10 3xl:right-14 4xl:right-20">
                 <AccentSquares
                   accentSquares={data.accentSquares}
                   seaBoxSrc={data.seaBoxSrc}
@@ -362,26 +388,27 @@ const ArchitectIndividualSlide = ({ data }) => {
         ) : (
           <>
             {/* Left - Text */}
-            <div className="w-[58%] sm:w-[56%] md:w-[54%] lg:w-[52%] xl:w-[50%] 2xl:w-[50%] 3xl:w-[50%] 4xl:w-[50%] px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-14 2xl:py-16 3xl:px-20 3xl:py-20 4xl:px-28 4xl:py-28 h-full relative">
+            <div className="w-[58%] sm:w-[56%] md:w-[54%] lg:w-[52%] xl:w-[50%] 2xl:w-[45%] 3xl:w-[45%] 4xl:w-[45%] px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 2xl:px-10 2xl:py-16 3xl:px-14 3xl:py-20 4xl:px-20 4xl:py-28 h-full relative flex flex-col">
               {/* Top - Name and Title */}
-              <div className="text-left absolute top-[15%] sm:top-[16%] md:top-[17%] lg:top-[18%] xl:top-[20%] 2xl:top-40 3xl:top-52 4xl:top-72 left-3 sm:left-4 md:left-5 lg:left-6 xl:left-8 2xl:left-14 3xl:left-20 4xl:left-28">
-                <h2 className="text-black text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl font-futura-bk uppercase tracking-widest text-element">
+              <div className="text-left pt-[8%] sm:pt-[10%] md:pt-[12%] lg:pt-[14%] xl:pt-[16%] 2xl:pt-[18%] 3xl:pt-[18%] 4xl:pt-[18%]">
+                <h2 className="text-black text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-3xl 3xl:text-3xl 4xl:text-4xl font-futura-bk uppercase tracking-[0.2em] sm:tracking-[0.25em] md:tracking-widest text-element">
                   {data.name}
                 </h2>
-                <p className="text-black text-[5px] sm:text-[6px] md:text-[7px] lg:text-[8px] xl:text-[10px] 2xl:text-sm 3xl:text-base 4xl:text-xl font-futura-bk uppercase tracking-wider opacity-60 mt-0.5 sm:mt-1 text-element">
+                <p className="text-black text-[5px] sm:text-[6px] md:text-[7px] lg:text-[8px] xl:text-[9px] 2xl:text-[14px] 3xl:text-sm 4xl:text-lg font-futura-bk uppercase tracking-[0.15em] sm:tracking-[0.2em] opacity-60 mt-0.5 sm:mt-1 text-element">
                   {data.title}
                 </p>
               </div>
 
-              {/* Middle - Paragraphs with exact line breaks */}
-              <div className="flex-1 flex flex-col justify-center py-1 sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3 absolute bottom-[12%] sm:bottom-[13%] md:bottom-[14%] lg:bottom-[15%] xl:bottom-[18%] 2xl:bottom-30 3xl:bottom-40 4xl:bottom-52 left-3 sm:left-4 md:left-5 lg:left-6 xl:left-8 2xl:left-14 3xl:left-20 4xl:left-28 right-3 sm:right-4 md:right-5 lg:right-6 xl:right-8 2xl:right-14 3xl:right-20 4xl:right-28">
-                <div className="text-left space-y-1 sm:space-y-1.5 md:space-y-2 lg:space-y-2.5 xl:space-y-3 2xl:space-y-4 3xl:space-y-5 4xl:space-y-6">
-                  {renderParagraphs(data.paragraphs, "left")}
-                </div>
+              {/* Spacer to push content down */}
+              <div className="flex-1"></div>
+
+              {/* Bottom - Paragraphs */}
+              <div className="pb-[12%] sm:pb-[14%] md:pb-[16%] lg:pb-[18%] xl:pb-[20%] 2xl:pb-[22%] 3xl:pb-[22%] 4xl:pb-[22%] xl:h-full 2xl:h-auto xl:flex  xl:items-center xl:justify-start">
+                {renderArchitectParagraphs(data.paragraphs, "left")}
               </div>
 
-              {/* Bottom - Accent Squares - FIXED: Absolutely positioned at bottom left */}
-              <div className="absolute bottom-4 sm:bottom-5 md:bottom-6 lg:bottom-8 xl:bottom-10 2xl:bottom-16 3xl:bottom-20 4xl:bottom-28 left-3 sm:left-4 md:left-5 lg:left-6 xl:left-8 2xl:left-14 3xl:left-20 4xl:left-28">
+              {/* Bottom - Accent Squares */}
+              <div className="absolute bottom-4 sm:bottom-5 md:bottom-6 lg:bottom-8 xl:bottom-10 2xl:bottom-16 3xl:bottom-20 4xl:bottom-28 left-3 sm:left-4 md:left-5 lg:left-6 xl:left-8 2xl:left-10 3xl:left-14 4xl:left-20">
                 <AccentSquares
                   accentSquares={data.accentSquares}
                   seaBoxSrc={data.seaBoxSrc}
@@ -390,13 +417,13 @@ const ArchitectIndividualSlide = ({ data }) => {
               </div>
             </div>
             {/* Right - Image */}
-            <div className="w-[42%] sm:w-[44%] md:w-[46%] lg:w-[48%] xl:w-[50%] 2xl:w-[80%] 3xl:w-[80%] 4xl:w-[80%] relative h-full overflow-hidden group cursor-pointer">
+            <div className="w-[42%] sm:w-[44%] md:w-[46%] lg:w-[48%] xl:w-[50%] 2xl:w-[55%] 3xl:w-[55%] 4xl:w-[55%] relative h-full overflow-hidden group cursor-pointer flex items-center">
               <img
                 src={data.imageSrc}
-                className="w-full h-full object-cover object-[20%_0%] text-element transition-all duration-700 ease-out group-hover:scale-105"
+                className="w-full h-auto object-cover object-[20%_0%] text-element transition-all duration-700 ease-out group-hover:scale-105"
                 alt=""
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-500" />
+              <div className="absolute inset-0 bg-black/0 transition-all duration-500" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
             </div>
           </>
@@ -421,13 +448,13 @@ const BuildingShowcaseSlide = ({ data }) => {
 
       <div className="absolute inset-0 flex">
         {/* Left - Building/Cityscape Image */}
-        <div className="w-[60%] sm:w-[60%] md:w-[62%] lg:w-[63%] xl:w-[64%] 2xl:w-[65%] 3xl:w-[65%] 4xl:w-[65%] relative h-full overflow-hidden group cursor-pointer">
+        <div className="w-[60%] sm:w-[60%] md:w-[62%] lg:w-[63%] xl:w-[64%] 2xl:w-[65%] 3xl:w-[65%] 4xl:w-[65%] relative h-full overflow-hidden group cursor-pointer flex items-center">
           <img
             src={data.buildingImageSrc}
-            className="w-full h-full object-cover object-[80%_50%] text-element transition-all duration-700 ease-out group-hover:scale-105"
+            className="w-full h-auto object-cover object-[80%_50%] text-element transition-all duration-700 ease-out group-hover:scale-105"
             alt=""
           />
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-500" />
+          <div className="absolute inset-0 bg-black/0  transition-all duration-500" />
         </div>
 
         {/* Right - Title and Squares */}
@@ -478,7 +505,10 @@ const BuildingElementsSlide = ({ data }) => {
         {/* Left Section - Element thumbnails with text */}
         <div className="w-[18%] sm:w-[18%] md:w-[18%] lg:w-[17%] xl:w-[16%] 2xl:w-[15%] 3xl:w-[15%] 4xl:w-[15%] px-1.5 py-3 sm:px-2 sm:py-4 md:px-2.5 md:py-5 lg:px-3 lg:py-6 xl:px-4 xl:py-8 2xl:px-6 2xl:py-12 3xl:px-8 3xl:py-16 4xl:px-12 4xl:py-20 flex flex-col justify-center gap-2 sm:gap-2.5 md:gap-3 lg:gap-4 xl:gap-5 2xl:gap-8 3xl:gap-10 4xl:gap-14 h-full">
           {data.elements.map((element, index) => (
-            <div key={index} className="flex flex-col group cursor-pointer items-end">
+            <div
+              key={index}
+              className="flex flex-col group cursor-pointer items-end"
+            >
               <div className="overflow-hidden relative flex-shrink-0 w-9 h-7 sm:w-10 sm:h-8 md:w-12 md:h-10 lg:w-16 lg:h-12 xl:w-20 xl:h-16 2xl:w-28 2xl:h-24 3xl:w-36 3xl:h-28 4xl:w-48 4xl:h-40">
                 <img
                   src={element.src}
@@ -517,7 +547,7 @@ const BuildingElementsSlide = ({ data }) => {
           {/* Description and Squares at bottom */}
           <div className="text-right">
             {data.description && (
-              <p className="text-black text-[4.5px] sm:text-[5px] md:text-[5.5px] lg:text-[6px] xl:text-[8px] 2xl:text-xs 3xl:text-sm 4xl:text-lg font-futura-bk leading-relaxed mb-1.5 sm:mb-2 md:mb-2.5 lg:mb-3 xl:mb-4 2xl:mb-6 3xl:mb-8 4xl:mb-10 text-element">
+              <p className="text-black text-[4.5px] sm:text-[5px] md:text-[5.5px] lg:text-[6px] xl:text-[8px] 2xl:text-sm 3xl:text-sm 4xl:text-lg font-futura-bk leading-relaxed mb-1.5 sm:mb-2 md:mb-2.5 lg:mb-3 xl:mb-4 2xl:mb-6 3xl:mb-8 4xl:mb-10 text-element">
                 {data.description}
               </p>
             )}
@@ -596,10 +626,10 @@ const MapSlide = ({ data }) => {
         </div>
 
         {/* Right Section - Map Image */}
-        <div className="w-[65%] sm:w-[65%] md:w-[65%] lg:w-[65%] xl:w-[65%] 2xl:w-[65%] 3xl:w-[65%] 4xl:w-[65%] relative h-full overflow-hidden group cursor-pointer">
+        <div className="w-[65%] sm:w-[65%] md:w-[65%] lg:w-[65%] xl:w-[65%] 2xl:w-[70%] 3xl:w-[65%] 4xl:w-[65%] relative h-full overflow-hidden group cursor-pointer flex items-center">
           <img
             src={data.mapImageSrc}
-            className="w-full h-full object-[100%_50%] object-cover text-element transition-all duration-700 ease-out group-hover:scale-105 absolute right-0"
+            className="w-full h-full object-cover text-element transition-all duration-700 ease-out group-hover:scale-105 absolute right-0 pl-13 xl:object-[0%]"
             alt=""
           />
         </div>
@@ -628,22 +658,22 @@ const PortfolioSlide = ({ data }) => {
             {data.buildings.map((building, index) => (
               <div
                 key={index}
-                className="flex-1 flex flex-col group cursor-pointer relative h-full overflow-hidden"
+                className="flex-1 flex flex-col group cursor-pointer relative h-full overflow-hidden justify-center "
               >
                 {/* Full height image */}
                 <img
                   src={building.src}
-                  className="w-full h-full object-cover text-element transition-all duration-700 ease-out group-hover:scale-105"
+                  className="w-full h-[65%] object-cover text-element transition-all duration-700 ease-out group-hover:scale-105"
                   style={{
                     objectPosition: building.objectPosition || "50% 50%",
                   }}
                   alt={building.name}
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500" />
+                <div className="absolute inset-0 bg-black/0  transition-all duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
 
                 {/* Label at TOP of image */}
-                <div className="absolute top-2 sm:top-2.5 md:top-3 lg:top-4 xl:top-5 2xl:top-8 3xl:top-10 4xl:top-14 left-0 right-0 text-center">
+                <div className="absolute top-2 sm:top-17 md:top-19 lg:top-35 xl:top-50 2xl:top-50 3xl:top-72 4xl:top-96 left-0 right-0 text-center">
                   <p className="text-white text-[5px] sm:text-[5.5px] md:text-[6px] lg:text-[7px] xl:text-[9px] 2xl:text-sm 3xl:text-base 4xl:text-xl uppercase font-futura-bk tracking-wider text-element drop-shadow-lg">
                     {building.name}
                   </p>
@@ -724,6 +754,7 @@ const Features = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const totalSlides = type1SlidesData.length;
 
+  // Determine animation direction based on slide index
   const getDirection = (index) => {
     return index % 2 === 0 ? "fromTop" : "fromBottom";
   };
@@ -771,32 +802,41 @@ const Features = () => {
       currentSlideEl.querySelectorAll(".text-element");
     const nextTextElements = nextSlideEl.querySelectorAll(".text-element");
 
+    // Ensure next slide's text elements are completely hidden
     gsap.set(nextTextElements, { opacity: 0 });
 
+    // Set initial clip-path for incoming slide
     gsap.set(nextSlideEl, {
       clipPath: direction.initial.clipPath,
       zIndex: 2,
     });
 
+    // Main slide transition animation
     gsap.to(nextSlideEl, {
       clipPath: direction.animate.clipPath,
       duration: 1.2,
       ease: "hop",
       onComplete: () => {
+        // Update z-indices after transition completes
         gsap.set(currentSlideEl, { zIndex: 0 });
         gsap.set(nextSlideEl, { zIndex: 1 });
+        
+        // Hide current slide's text elements
         gsap.set(currentTextElements, { opacity: 0 });
-        setCurrentSlide(targetIndex);
-        setIsAnimating(false);
-      },
-    });
 
-    gsap.to(nextTextElements, {
-      opacity: 1,
-      duration: 0.8,
-      stagger: 0.06,
-      delay: 0.5,
-      ease: "power1.out",
+        // NOW fade in the next slide's text elements (after transition is complete)
+        gsap.to(nextTextElements, {
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.05,
+          ease: "power1.out",
+          onComplete: () => {
+            // Only update state after everything is done
+            setCurrentSlide(targetIndex);
+            setIsAnimating(false);
+          },
+        });
+      },
     });
   };
 
@@ -873,16 +913,19 @@ const Features = () => {
     () => {
       const slides = containerRef.current?.querySelectorAll(".slide");
 
+      // Initially hide all text elements
       const allTextElements =
         containerRef.current?.querySelectorAll(".text-element");
       gsap.set(allTextElements, { opacity: 0 });
 
       slides?.forEach((slide, index) => {
         if (index === 0) {
+          // First slide is visible
           gsap.set(slide, {
             clipPath: "inset(0 0 0 0)",
             zIndex: 1,
           });
+          // Fade in first slide's text elements
           const textElements = slide.querySelectorAll(".text-element");
           gsap.to(textElements, {
             opacity: 1,
@@ -892,6 +935,7 @@ const Features = () => {
             ease: "power1.out",
           });
         } else {
+          // Other slides are hidden with their initial clip-path
           const direction = directions[getDirection(index)];
           gsap.set(slide, {
             clipPath: direction.initial.clipPath,

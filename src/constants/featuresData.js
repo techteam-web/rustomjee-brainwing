@@ -125,6 +125,7 @@ export const type1SlidesData = [
 
   // ============================================
   // SLIDE 3 - Sanjay Puri Individual (Image LEFT, Text RIGHT)
+  // Line breaks exactly as shown in image 1
   // ============================================
   {
     id: 3,
@@ -146,10 +147,9 @@ export const type1SlidesData = [
           "By limiting the building to just two residences per floor, the design ensures clarity of planning, privacy, and",
           "uninterrupted visual corridors.",
           "Generous floor-to-floor heights and deep outdoor decks are integral to the architecture, lifting the line of",
-          " sight above the urban foreground and extending living spaces toward the horizon. The façade is defined by",
+          "sight above the urban foreground and extending living spaces toward the horizon. The façade is defined by",
           "soft curves and a restrained white palette, creating a timeless presence shaped by light and shadow",
           "throughout the day. Rustomjee Cliff Tower is designed to remain relevant, elegant, and enduring over time.",
-          
         ]
       },
     ],
@@ -160,6 +160,7 @@ export const type1SlidesData = [
 
   // ============================================
   // SLIDE 4 - Patty Mak Individual (Text LEFT, Image RIGHT)
+  // Line breaks exactly as shown in image 2
   // ============================================
   {
     id: 4,
@@ -173,17 +174,17 @@ export const type1SlidesData = [
       {
         lines: [
           "Rustomjee Cliff Tower is a refined convergence of architecture, nature, and lifestyle, guided by a philosophy of",
-          " fluidity that seamlessly connects the built environment to its surroundings.",
+          "fluidity that seamlessly connects the built environment to its surroundings.",
           "The interior spaces are crafted to be a canvas for the homeowner's individuality, with open-plan designs that",
-          " invite residents to imprint their personal narrative and style. This flexibility allows for a deep sense of",
-          " ownership and connection, as each resident crafts their own unique sanctuary amidst the breathtaking",
+          "invite residents to imprint their personal narrative and style. This flexibility allows for a deep sense of",
+          "ownership and connection, as each resident crafts their own unique sanctuary amidst the breathtaking",
           "backdrop of the ocean horizon.",
           "The tower's luminous white façade, shaped by gentle curves, dissolves into the sky, animated by a quiet",
-          " interplay of light and shadow.",
+          "interplay of light and shadow.",
           "Every detail, from the Main Lobby Lounge to the Sky Club Lounge, has been curated with a bespoke palette of",
-          " timeless elegance, where each material and texture is woven together to create spaces that transcend time.",
-          " The careful selection of materials, colors, and textures creates a sense of warmth and sophistication, inviting",     
-          " residents to unwind and indulge in the luxurious lifestyle that Cliff Tower embodies.",  
+          "timeless elegance, where each material and texture is woven together to create spaces that transcend time.",
+          "The careful selection of materials, colors, and textures creates a sense of warmth and sophistication, inviting",
+          "residents to unwind and indulge in the luxurious lifestyle that Cliff Tower embodies.",
         ]
       },
     ],
@@ -194,6 +195,7 @@ export const type1SlidesData = [
 
   // ============================================
   // SLIDE 5 - Kunal Maniar Individual (Image LEFT, Text RIGHT)
+  // Line breaks exactly as shown in image 3
   // ============================================
   {
     id: 5,
@@ -207,32 +209,15 @@ export const type1SlidesData = [
       {
         lines: [
           "The landscape at Rustomjee Cliff Tower is conceived as a quiet counterpoint to the architecture - soft, layered,",
-          " and deliberately restrained. The intent is not to impose nature, but to allow it to emerge naturally, creating",
-          " moments of calm and sensory pause within the built form.",
+          "and deliberately restrained. The intent is not to impose nature, but to allow it to emerge naturally, creating",
+          "moments of calm and sensory pause within the built form.",
           "At ground level, dense planting and textured surfaces choreograph arrival, offering privacy, shade, and a",
-          " gentle transition from city to sanctuary.",
-          "Movement is slowed, views are framed, and nature is experienced through foliage, filtered light, and tactile",
-          " materials.",
+          "gentle transition from city to sanctuary. Movement is slowed, views are framed, and nature is experienced",
+          "through foliage, filtered light, and tactile materials.",
           "The rooftop landscape unfolds as an elevated garden retreat. Open decks, water, and pockets of greenery",
-          " are composed to encourage lingering - whether in solitude or shared moments.",
-          " Tropical planting softens edges and blends seamlessly with sky and horizon.",
-        ]
-      },
-      {
-        lines: [
-          
-        ]
-      },
-      {
-        lines: [
-          
-          
-        ]
-      },
-      {
-        lines: [
-          "The landscape at Rustomjee Cliff Tower",
-          " is experiential rather than ornamental - designed to reconnect people ",
+          "are composed to encourage lingering - whether in solitude or shared moments.",
+          "Tropical planting softens edges and blends seamlessly with sky and horizon.",
+          "The landscape at Rustomjee Cliff Tower is experiential rather than ornamental - designed to reconnect people",
           "with nature through rhythm, restraint, and timeless simplicity.",
         ]
       },
@@ -351,8 +336,8 @@ export const type1SlidesData = [
     textLines: [
       "EVERY LANDMARK",
       "LEADS TO A RARER ONE",
-      "CLIFF TOWER IS THE PINNACLE",
-      "OF OUR JOURNEY IN BANDRA",
+      "CLIFF TOWER IS THE PINNACLE OF OUR ",
+      "JOURNEY IN BANDRA",
     ],
     accentSquares: ["#1a3a4a", "#2d4a5a"],
     seaBoxSrc: "/slides/seaBox.webp",

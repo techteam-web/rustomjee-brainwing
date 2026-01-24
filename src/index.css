@@ -12,8 +12,8 @@
   --font-futura-medium: Futura-Medium, "sans-serif";
   --font-futura-bk: Futura-bk-bt, "sans-serif";
 
-  --breakpoint-3xl: 2560px;
-  --breakpoint-4xl: 3840px;
+  --breakpoint-3xl: 160rem;
+  --breakpoint-4xl: 240rem;
 }
 
 @import "tailwindcss";
