@@ -152,11 +152,11 @@ const SplitBackgroundSlide = ({ data }) => {
   return (
     <div className="relative w-full h-full">
       {/* Single Background covering entire slide */}
-      {/* <img
+      <img
         src={data.rightSection.backgroundSrc}
-        className="object-contain w-full h-full absolute inset-0"
+        className="object-cover w-full h-full absolute inset-0"
         alt=""
-      /> */}
+      />
 
       {/* Content Layer */}
       <div className="absolute inset-0 flex">
