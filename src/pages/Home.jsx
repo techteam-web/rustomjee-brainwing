@@ -308,7 +308,7 @@ const Home = () => {
             
             <img 
               ref={heroImage} 
-              src="/images/TopSea1.png" 
+              src="/images/TopSea3.png" 
               className="w-full h-auto block relative z-0 pointer-events-none" 
               alt="Hero Background" 
             />
@@ -325,11 +325,11 @@ const Home = () => {
                 [mask-position:center] [-webkit-mask-position:center]
               "
             >
-              <source src="/video/beachfinal2.mp4" type="video/mp4" />
+              <source src="/video/beachfinalNew.mp4" type="video/mp4" />
             </video>
 
             <div className="absolute top-10 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
-              <img ref={introLogo} src="/images/logo.svg" alt="Rustomjee" className="h-12 xl:h-18 lg:h-16 w-auto opacity-0 3xl:h-30 4xl:h-45" />
+              <img ref={introLogo} src="/images/logo.png" alt="Rustomjee" className="h-12 xl:h-18 lg:h-16 w-auto opacity-0 3xl:h-30 4xl:h-45" />
             </div>
 
             {/* OVERLAY CONTAINER: Covers entire Section 1 */}
