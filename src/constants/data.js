@@ -254,7 +254,7 @@ export const slidesData = [
   },
   {
     id: 9,
-    src: "/images/1.8.1.jpg",
+    src: "/video/7.mp4",
     category: "amenities",
     title: "Infinity Edge",
   },
@@ -273,11 +273,17 @@ export const slidesData = [
   },
   {
     id: 13,
-    revealImage: "/images/2.3.jpg",
-    src: "/images/2.4.jpg",
+    src: "/video/8.mp4",
     category: "apartment",
     title: "Club Lounge",
   },
+  // {
+  //   id: 13,
+  //   revealImage: "/images/2.3.jpg",
+  //   src: "/images/2.4.jpg",
+  //   category: "apartment",
+  //   title: "Club Lounge",
+  // },
   {
     id: 15,
     src: "/images/2.6.1.jpg",
