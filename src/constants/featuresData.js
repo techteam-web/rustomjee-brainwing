@@ -42,7 +42,7 @@ export const type1SlidesData = [
     rightSection: {
       backgroundSrc: "/slides/bg.webp",
       topText: "Boman R. Irani",
-      topSubtext: "CHAIRMAN AND MANAGING DIRECTOR,\nRUSTOMJEE GROUP",
+      topSubtext: "CHAIRMAN AND MANAGING DIRECTOR RUSTOMJEE \nGROUP",
       // Each paragraph is an array of lines - each line will be rendered separately
       paragraphs: [
         {
